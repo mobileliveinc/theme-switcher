@@ -13,7 +13,8 @@
 ⭐ Read more on the [Figma API Overview](https://www.figma.com/plugin-docs/api/api-overview/).
 
 ## Toolings
-This repo is using:
+
+This repo is using :
 * React + Webpack
 * TypeScript
 * TSLint
