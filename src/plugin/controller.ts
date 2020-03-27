@@ -1,25 +1,53 @@
-figma.showUI(__html__);
+figma.showUI(__html__, {width:500, height: 500});
 let collectLocalColors = []
 let currenThemeList = []
 let getSelectedTheme = ""
 
+
 figma.ui.onmessage = (msg: { type: string; themeData: any; count: any; themeName: string; data: any; }) => {
-    if (msg.type === 'create-rectangles') {
-        getLocalPaintsArray('color', msg.themeData)
+    if (msg.type === 'create-theme') {
+        getLocalPaintsArray('color')
+    }
+    if (msg.type === 'getCurrentTheme'){
+    (async function() {
+        try {
+            const data = await figma.clientStorage.getAsync('figma-local-variables')
         figma.ui.postMessage({
-            type: 'create-rectangles',
-            message: `Created ${msg.count} Rectangles`,
-        });
+            type: 'getTheme',
+            themeData: data
+        })
+        } catch(e){
+
+        }
+    })()
     }
     if (msg.type === 'apply-theme') {
         getSelectedTheme = msg.themeName
-        applyTheme('selection', msg.data, msg.themeName)
+        applyTheme('selection', msg.themeName)
         figma.ui.postMessage({
-            type: 'apply-theme',
+            type: 'theme-appllied',
             message: `apply-theme Theme`,
         });
     }
+    if (msg.type === 'remove-theme') {
+        deleteCurrentThemes()
+    }
+    if (msg.type === 'close-plugin') {
+        figma.closePlugin()
+    }
 };
+
+function deleteCurrentThemes() {
+    (async function f() {
+        try {
+            await figma.clientStorage.setAsync('figma-local-variables',{})
+        } catch (error) {
+        }   
+    })()
+    figma.ui.postMessage({
+        type: 'delete-theme',
+    })
+}
 
 function findMatchInSelectedTheme(styleKey, data) {
     // this gets item in the array which matches the current style applied
@@ -41,9 +69,8 @@ function findMatchInSelectedTheme(styleKey, data) {
     }
 }
 
-function getLocalPaintsArray(types: string, themeName: any) {
+function getLocalPaintsArray(types: string) {
     const localStyles = figma.getLocalPaintStyles()
-    console.log('locallll')
     if (types === 'color') {
         if (localStyles) {
             localStyles.forEach(({key, id, type, name}) => {
@@ -71,16 +98,32 @@ function getLocalPaintsArray(types: string, themeName: any) {
             figma.notify('There are no color styles in the document');
         }
     }
-    figma.ui.postMessage({
-        type: 'addNewTheme',
-        themeData: collectLocalColors,
-    });
-    console.log('getttttttttttt', collectLocalColors)
+    (async function(collectLocalColors) {
+        try {
+            await figma.clientStorage.setAsync('figma-local-variables', {collectLocalColors, appliedTheme: 'default'})
+            figma.ui.postMessage({
+                type: 'theme-created',
+                message: `Theme Created`,
+            });
+        } catch (error) {
+            
+        }
+       })(collectLocalColors);
+
+       (async function () {
+        try {
+            const themeData = await figma.clientStorage.getAsync('figma-local-variables')
+            figma.ui.postMessage({
+                type: 'getTheme',
+                themeData: themeData
+            })
+        } catch (error) {
+            
+        }
+       })()
   }
 
 function applyColor(node: { children: any[]; type: string; backgroundStyleId: string; fillStyleId: string; strokeStyleId: string; }, data: any) {
-    console.log('nodeeee type', node.type)
-
     // iterate through children if the node has them
     if (node.children) {
         node.children.forEach((child: any) => {
@@ -129,9 +172,7 @@ function applyColor(node: { children: any[]; type: string; backgroundStyleId: st
         }
         // strokes
         if (node.strokeStyleId) {
-
             (function() {
-
                 const style = figma.getStyleById(node.strokeStyleId) as PaintStyle;
                 if (style.key) {
                     const newStyleKey = findMatchInSelectedTheme(style.key, data);
@@ -144,28 +185,38 @@ function applyColor(node: { children: any[]; type: string; backgroundStyleId: st
     }
 }
 
-function applyTheme(applyTo: string, data: any[], themeName: any) {
-    let nodes: any[] | readonly SceneNode[];
-    if (applyTo === 'selection') {
-        if (figma.currentPage.selection) {
-            nodes = figma.currentPage.selection;
-        } else {
-            console.log('Please make a selection')
-            figma.notify('Please make a selection');
+function applyTheme(applyTo: string, themeName: any) {
+    (async function storeData() {
+        try {
+            const ThemeObj = await figma.clientStorage.getAsync('figma-local-variables')
+            const data = ThemeObj.collectLocalColors
+            let nodes: any[] | readonly SceneNode[];
+            if (applyTo === 'selection') {
+                if (figma.currentPage.selection) {
+                    nodes = figma.currentPage.selection;
+                } else {
+                    figma.notify('Please make a selection');
+                }
+            } else {
+                if (figma.currentPage.children) {
+                    nodes = figma.currentPage.children;
+                } else {
+                    figma.notify('Please make a selection');
+                }
+            }
+            if (nodes) {
+                figma.notify('Applying theme...', {timeout: 1000 });
+                const colorStyles = [...new Set(data.map((style) => style.theme === themeName && style.type === 'PAINT'))];
+                if (colorStyles) {
+                    nodes.forEach((node: any) => {
+                        applyColor(node, data);
+                    });
+                }
+            }
+            await figma.clientStorage.setAsync('figma-local-variables', {...ThemeObj,appliedTheme: themeName})
+        } catch (error) {
+            
         }
-    } else {
-        if (figma.currentPage.children) {
-            nodes = figma.currentPage.children;
-        } else {
-            figma.notify('Please make a selection');
-        }
-    }
-    if (nodes) {
-        figma.notify('Applying theme...', {timeout: 1000 });
-        const colorStyles = [...new Set(data.map((style) => style.theme === themeName && style.type === 'PAINT'))];
-        if (colorStyles) {
-            nodes.forEach((node: any) => {
-                applyColor(node, data);
-            });
-        }
-    }}
+       })
+    ()
+}

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import '../styles/ui.css';
 
-declare function require(path: string): any;
+// declare function require(path: string): any;
 
-const Apply = ({themeList, handleApply}) => {
+const Apply = ({themeList, handleApply, appliedTheme}) => {
   const [value, setValue] = React.useState('default')
 
     const handleSelect = (e) => {
@@ -13,13 +13,13 @@ const Apply = ({themeList, handleApply}) => {
     return (
         <div>
           <label >Choose a Theme:</label>
-          <select onChange={handleSelect} onBlur={handleSelect}>
+          <select className="selec-theme" onChange={handleSelect} onBlur={handleSelect}>
             {
               themeList.map((th: string) => 
-              <option key={th} value={th}>{th}</option>)
+              <option key={th} value={th} selected={appliedTheme === th ? true : false}>{th}</option>)
             }
           </select>
-          <button onClick={() => handleApply(value)}>Apply</button>
+          <button id="button-apply" onClick={() => handleApply(value)}>Apply</button>
         </div>
     );
 };

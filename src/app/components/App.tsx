@@ -1,79 +1,59 @@
 import * as React from 'react';
 import '../styles/ui.css';
 import Apply from './Apply'
-import {database} from '../../firebase';
 
-const themesRef = database.ref('theming');
 
 declare function require(path: string): any;
 
 const App = ({}) => {
-    const [themeObj, setThemeObj] = React.useState({})
-    const [themeName, setThemeName] = React.useState("")
-    const [isApply, setIsApply] = React.useState(false)
+    const [appliedTheme,setAppliedTheme] = React.useState("")
     const [data, setData] = React.useState([])
 
+    React.useEffect(() => {
+        (async function() {
+           await parent.postMessage({pluginMessage: {type: 'getCurrentTheme'}}, '*');
+           getCreatedTheme()
+        })()
+    }, [])
 
-    const textbox = React.useRef<HTMLInputElement>(undefined);
-
-    const countRef = React.useCallback((element: HTMLInputElement) => {
-        if (element) element.value = '5';
-        textbox.current = element;
-    }, []);
-
+    const getCreatedTheme = () => {        
+        window.onmessage = (event) => {
+            const { type, themeData } = event.data.pluginMessage;
+            if (type === 'getTheme') {
+                const {collectLocalColors, appliedTheme} = themeData
+                setAppliedTheme(appliedTheme ? appliedTheme : "")
+                setData(collectLocalColors && collectLocalColors.length > 0 ? collectLocalColors : [] )
+            }
+            if (type === 'delete-theme') {
+                setData([])
+           }
+        }
+    }
     const onCreate = React.useCallback(() => {
-        parent.postMessage({pluginMessage: {type: 'create-rectangles', themeData: themeName}}, '*');
-    }, [themeName]);
-
-    const onCancel = React.useCallback(() => {
-        parent.postMessage({pluginMessage: {type: 'cancel'}}, '*');
+        parent.postMessage({pluginMessage: {type: 'create-theme'}},'*');
     }, []);
 
-    const handleApply = (val) => {
-        parent.postMessage({pluginMessage: {type: 'apply-theme', data, themeName: val }}, '*');
+    const onDelete = React.useCallback(() => {
+        parent.postMessage({pluginMessage: {type: 'remove-theme'}}, '*');
+    }, []);
+
+    const onClose = React.useCallback(() => {
+        parent.postMessage({pluginMessage: {type: 'close-plugin'}}, '*');
+    }, []);
+
+    const handleApplyTheme = (value) => {
+        parent.postMessage({pluginMessage: {type: 'apply-theme', themeName: value }}, '*');
     }
 
     React.useEffect(() => {
         // This is how we read messages sent from the plugin controller
         window.onmessage = (event) => {
-            const { type, message } = event.data.pluginMessage;
-            if (type === 'create-rectangles') {
-
-                console.log(`Figma Says: ${message}`);
-            };
-
-            if (type === 'addNewTheme') {
-                console.log(`get themmeeee ${event.data.pluginMessage.themeData}`)
-                setThemeObj({...themeObj, [themeName || 'ahmad']: event.data.pluginMessage.themeData})
-                themesRef.once('value').then((snapshot) => {
-                    const current = snapshot.val()
-                    console.log('current', current)
-                    if (current && Object.keys(current).length > 0) {
-                        const news = current.theme.concat(event.data.pluginMessage.themeData)
-                        console.log('newsssss', news)
-                        themesRef.set({theme: news})
-                    } else {
-                        console.log('me thinkkkkkkkkkkk')
-                        themesRef.set({theme: event.data.pluginMessage.themeData})
-
-                    }
-
-                })
-                setIsApply(true)
-                
+            const { type } = event.data.pluginMessage;
+            if (type === 'theme-created') {
+                getCreatedTheme()
             }
         }
-    }, [themeName]);
-
-    React.useEffect(() => {
-        themesRef.once('value').then(function(snapshot) {
-            const get = snapshot.val()
-            if (get && Object.keys(get).length > 0){
-            setData(get.theme)
-            setIsApply(true)
-            }
-        })
-    }, [themeObj])
+    }, []);
 
     const getThemeList = () => {
         const dataList = data ? [...new Set(data.map(item => item.theme))] : []
@@ -84,17 +64,25 @@ const App = ({}) => {
         <div>
             <img src={require('../assets/logo.svg')} />
             <h2>Theme Creator</h2>
-            <button id="create" onClick={onCreate}>
-                Create Theme with Local Colors
-            </button>
-            <button onClick={onCancel}>Cancel</button>
+            <div className="wrapper">
+                {
+                    data && data.length > 0 &&  
+                <button id="create" onClick={onDelete}>
+                    Delete Current Themes
+                </button>
+
+                }
+                <button id="create" onClick={onCreate}>
+                    Create Theme with Local Colors
+                </button>
+            </div>
             {
-                isApply ?  
-                (
-                    <Apply handleApply={handleApply} themeList={getThemeList()}/>
+                data && data.length > 0 ?  (
+                    <Apply appliedTheme={appliedTheme} handleApply={handleApplyTheme} themeList={getThemeList()}/>
                 )
                 : <h1>First Create your Theme</h1>
             }
+            <button onClick={onClose}>Cancel</button>
         </div>
     );
 };
