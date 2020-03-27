@@ -17,7 +17,7 @@ figma.ui.onmessage = (msg: { type: string; themeData: any; count: any; themeName
             themeData: data
         })
         } catch(e){
-
+            figma.notify('Error While Getting Current Theme');
         }
     })()
     }
@@ -42,6 +42,7 @@ function deleteCurrentThemes() {
         try {
             await figma.clientStorage.setAsync('figma-local-variables',{})
         } catch (error) {
+            figma.notify('Error While Deleting the Current Theme');
         }   
     })()
     figma.ui.postMessage({
@@ -106,7 +107,7 @@ function getLocalPaintsArray(types: string) {
                 message: `Theme Created`,
             });
         } catch (error) {
-            
+            figma.notify('Error While Creating New Theme');
         }
        })(collectLocalColors);
 
@@ -118,7 +119,7 @@ function getLocalPaintsArray(types: string) {
                 themeData: themeData
             })
         } catch (error) {
-            
+            figma.notify('Error While Getting New Theme');
         }
        })()
   }
@@ -215,7 +216,7 @@ function applyTheme(applyTo: string, themeName: any) {
             }
             await figma.clientStorage.setAsync('figma-local-variables', {...ThemeObj,appliedTheme: themeName})
         } catch (error) {
-            
+            figma.notify('Error While Getting New Theme');
         }
        })
     ()
