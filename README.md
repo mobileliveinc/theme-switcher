@@ -37,7 +37,7 @@ This repo is using :
   <p align="center">
     <img src="./assets/ADD_COLOR.png">
     <br />
-    <img src="./ADD_COLOR_2.png">
+    <img src="./assets/ADD_COLOR_2.png">
     <br />
     <img src="./assets/ADD_THEME_NAME.png">
   </p>
