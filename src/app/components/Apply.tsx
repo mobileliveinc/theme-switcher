@@ -4,7 +4,7 @@ import '../styles/ui.css';
 // declare function require(path: string): any;
 
 const Apply = ({themeList, handleApply, appliedTheme}) => {
-  const [value, setValue] = React.useState('default')
+  const [value, setValue] = React.useState(appliedTheme || 'default')
 
     const handleSelect = (e) => {
       setValue(e.target.value)
