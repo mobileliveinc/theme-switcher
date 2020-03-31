@@ -60,7 +60,7 @@ This repo is using :
   let's assume we have above variables in current project.
   you will get a list of two themes
 
-  1) Default     2) Dark
+             1) Default     2) Dark
 
   The plugin will generate theme names based on " / " in variable name.variable names without slash " / " pattern will consider as default theme otherwise first half before slash willl consider as theme name and second half will consider as color name.
 
