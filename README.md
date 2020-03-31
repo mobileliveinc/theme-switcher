@@ -33,6 +33,16 @@ This repo is using :
   color in the right side of figma toolbar and click to local styles menu and again click on + sign in color-styles menu.
   write your theme specific color name  😊
 
+
+  <p align="center">
+    <img src="./assets/ADD_COLOR.png">
+    <br />
+    <img src="./ADD_COLOR_2.png">
+    <br />
+    <img src="./assets/ADD_THEME_NAME.png">
+  </p>
+
+
   Coloor variables : 
 
     1) Primary
