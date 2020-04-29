@@ -3,13 +3,8 @@ import '../styles/ui.css';
 
 // declare function require(path: string): any;
 
-const Apply = ({themeList, handleApply, appliedTheme}) => {
-    const [value, setValue] = React.useState(appliedTheme || 'default');
-
-    const handleSelect = e => {
-        setValue(e.target.value);
-    };
-
+const Apply = ({themeList, handleSelect, appliedTheme}) => {
+    console.log(appliedTheme);
     return (
         <div>
             <label>Choose a Theme:</label>
@@ -20,9 +15,9 @@ const Apply = ({themeList, handleApply, appliedTheme}) => {
                 </button>
             ))}
             <br />
-            <button id="button-apply" onClick={() => handleApply(value)} style={{marginTop: '10px'}}>
+            {/* <button id="button-apply" onClick={() => handleApply(value)} style={{marginTop: '10px'}}>
                 Apply
-            </button>
+            </button> */}
         </div>
     );
 };
