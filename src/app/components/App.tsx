@@ -72,7 +72,7 @@ const App = ({}) => {
     };
     console.log('isOnboardingDone state is ', isOnboardingDone);
     if (dataLoaded === false) return null;
-    return isOnboardingDone ? (
+    return !isOnboardingDone ? (
         <ThemeSwicther
             data={data}
             // onDelete={onDelete}

@@ -1,7 +1,7 @@
 body {
     font: 12px sans-serif;
     text-align: center;
-    margin: 20px;
+    /* margin: 20px; */
 }
 button {
     border-radius: 5px;
@@ -15,7 +15,7 @@ button {
 }
 #button-apply {
     border-radius: 5px;
-    color:#FFF;
+    color: #fff;
     border: none;
     padding: 8px 15px;
     margin: 0 5px;
@@ -45,15 +45,27 @@ input:focus {
     box-shadow: inset 0 0 0 2px #18a0fb;
 }
 
-.wrapper{
+.wrapper {
     display: inline-flex;
 }
 
-#react-page{
+#react-page {
     width: 500px;
 }
-.selec-theme{
+.selec-theme {
     margin: 20px;
     width: 150px;
     height: 30px;
+}
+.slider-button {
+    background: #18a0fb;
+    z-index: 99;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    display: initial;
+    align-items: center;
+    justify-content: center;
+    margin-top: 13%;
+    padding: 0px;
 }
