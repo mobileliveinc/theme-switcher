@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../styles/ui.css';
+import '../styles/ui.scss';
 import ThemeSwicther from './themeSwitcher';
 // import Apply from './ApplyWithButtons';
 import OnBoadring from './onBorading';

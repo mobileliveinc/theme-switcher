@@ -47,6 +47,19 @@ input:focus {
 
 .wrapper {
     display: inline-flex;
+    .apply-btn {
+        border-radius: 5px;
+        background: #f48245;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        width: 100px;
+        height: 30px;
+        margin-top: 15px;
+        margin-right: 32px;
+        margin-bottom: 10px;
+        float: right;
+    }
 }
 
 #react-page {
@@ -104,16 +117,4 @@ input:focus {
     margin: 5px 5px;
     outline: none;
 }
-.apply-btn {
-    border-radius: 5px;
-    background: #f48245;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    width: 100px;
-    height: 30px;
-    margin-top: 15px;
-    margin-right: 32px;
-    margin-bottom: 10px;
-    float: right;
-}
+

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import OnBoadringSlide from './onBoardingSlide';
-import '../styles/ui.css';
+import '../styles/ui.scss';
 
 // declare function require(path: string): any;
 

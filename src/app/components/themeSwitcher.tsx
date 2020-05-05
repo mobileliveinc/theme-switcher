@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Apply from './ApplyWithButtons';
-import '../styles/ui.css';
+import '../styles/ui.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faRedo, faBell} from '@fortawesome/free-solid-svg-icons';
 
