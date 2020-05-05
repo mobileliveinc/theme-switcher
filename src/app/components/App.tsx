@@ -72,18 +72,25 @@ const App = ({}) => {
     };
     console.log('isOnboardingDone state is ', isOnboardingDone);
     if (dataLoaded === false) return null;
-    return !isOnboardingDone ? (
-        <ThemeSwicther
-            data={data}
-            // onDelete={onDelete}
-            onCreate={onCreate}
-            appliedTheme={appliedTheme}
-            handleApplyTheme={handleApplyTheme}
-            getThemeList={getThemeList}
-            // onClose={onClose}
-        />
-    ) : (
-        <OnBoadring handleOnboardingFinish={onBoardingDone} />
+    return (
+        <React.Fragment>
+            {isOnboardingDone ? (
+                <ThemeSwicther
+                    data={data}
+                    // onDelete={onDelete}
+                    onCreate={onCreate}
+                    appliedTheme={appliedTheme}
+                    handleApplyTheme={handleApplyTheme}
+                    getThemeList={getThemeList}
+                    // onClose={onClose}
+                />
+            ) : (
+                <OnBoadring handleOnboardingFinish={onBoardingDone} />
+            )}
+            {/* <div style={{textAlign:"center", backgroundColor:'#F48245', marginTop:'72px', marginLeft:'-8px'}}>
+        <p style={{color:'white', padding:'2px'}}>Created by MobileLIVE</p>
+    </div> */}
+        </React.Fragment>
     );
 };
 

@@ -1,4 +1,4 @@
-figma.showUI(__html__, {width: 500, height: 500});
+figma.showUI(__html__, {width: 380, height: 616});
 let collectLocalColors = [];
 let currenThemeList = [];
 let getSelectedTheme = '';

@@ -7,10 +7,8 @@ const Apply = ({themeList, handleSelect, appliedTheme}) => {
     console.log(appliedTheme);
     return (
         <div>
-            <label>Choose a Theme:</label>
-            <br />
             {themeList.map((th: string) => (
-                <button key={th} value={th} onClick={handleSelect}>
+                <button className="theme-selection-button" key={th} value={th} onClick={handleSelect}>
                     {th}
                 </button>
             ))}

@@ -7,20 +7,20 @@ import '../styles/ui.css';
 const OnBoadring = ({handleOnboardingFinish}) => {
     const slides = [
         {
-            image: 'arrows.png',
+            image: 'themeSwitcherScreen1.png',
             title: 'Welcome To Theme Creator',
             description:
                 'Theme creator let’s you quickly create color themes from your published Figma styles. Theme creator does this by matching styles with the same names across themes.',
         },
         {
-            image: 'photoPreview.png',
+            image: 'themeSwitcherScreen2.png',
             title: 'Start Creating Themes',
             description: 'Create Local Styles, styles must use name/ in in order for themes to work',
         },
     ];
     const sliderButtonStyles = {
         active: {
-            backgroundColor: '#18A0FB',
+            backgroundColor: '#F48245',
         },
         inActive: {
             backgroundColor: '#fff',
@@ -52,17 +52,20 @@ const OnBoadring = ({handleOnboardingFinish}) => {
 
     return (
         <div>
-            <OnBoadringSlide slide={slides[index]} revealFrom={revealFrom} />
-            <button
-                style={{marginTop: '10%'}}
-                onClick={() => handleOnboardingFinish()}
-                hidden={index !== slides.length - 1}
-            >
-                Create Theme
-            </button>
-            <br />
-            {getButton(slides)}
-            <br />
+            <OnBoadringSlide slide={slides[index]} revealFrom={revealFrom} skipIntro={handleOnboardingFinish} />
+            <div style={{textAlign: 'center'}}>
+                <button
+                    style={{marginTop: '50px'}}
+                    className="primary-button"
+                    onClick={index === slides.length - 1 ? () => handleOnboardingFinish() : () => setIndex(index + 1)}
+                    // hidden={index !== slides.length - 1}
+                >
+                    {index === slides.length - 1 ? 'Create Theme' : 'Next'}
+                </button>
+            </div>
+            {/* <br /> */}
+            <div style={{textAlign: 'center'}}>{getButton(slides)}</div>
+            {/* <br /> */}
         </div>
     );
 };

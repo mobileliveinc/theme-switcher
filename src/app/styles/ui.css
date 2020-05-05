@@ -1,9 +1,9 @@
 body {
     font: 12px sans-serif;
-    text-align: center;
+    text-align: left;
     /* margin: 20px; */
 }
-button {
+/* button {
     border-radius: 5px;
     background: white;
     color: black;
@@ -12,7 +12,7 @@ button {
     margin: 0 5px;
     box-shadow: inset 0 0 0 1px black;
     outline: none;
-}
+} */
 #button-apply {
     border-radius: 5px;
     color: #fff;
@@ -50,7 +50,7 @@ input:focus {
 }
 
 #react-page {
-    width: 500px;
+    width: 380px;
 }
 .selec-theme {
     margin: 20px;
@@ -58,7 +58,6 @@ input:focus {
     height: 30px;
 }
 .slider-button {
-    background: #18a0fb;
     z-index: 99;
     border-radius: 50%;
     width: 10px;
@@ -67,5 +66,54 @@ input:focus {
     align-items: center;
     justify-content: center;
     margin-top: 13%;
-    padding: 0px;
+    margin-left: 4px;
+    padding: 2px;
+}
+.primary-button {
+    border-radius: 5px;
+    background: #f48245;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    width: 160px;
+    height: 30px;
+    margin: 0 5px;
+    outline: none;
+}
+.skip-inro-link {
+    color: #f48245;
+    display: flex;
+    margin-top: 20%;
+    margin-left: 32px;
+    cursor: pointer;
+}
+.resync-link {
+    color: #f48245;
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.theme-selection-button {
+    border-radius: 5px;
+    background: #f48245;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    width: 148px;
+    height: 30px;
+    margin: 5px 5px;
+    outline: none;
+}
+.apply-btn {
+    border-radius: 5px;
+    background: #f48245;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    width: 100px;
+    height: 30px;
+    margin-top: 15px;
+    margin-right: 32px;
+    margin-bottom: 10px;
+    float: right;
 }
