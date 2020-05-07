@@ -74,7 +74,7 @@ const App = ({}) => {
     if (dataLoaded === false) return null;
     return (
         <React.Fragment>
-            {!isOnboardingDone ? (
+            {isOnboardingDone ? (
                 <ThemeSwicther
                     data={data}
                     // onDelete={onDelete}

@@ -49,7 +49,8 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
     } else {
         return (
             <React.Fragment>
-                <div style={{padding: '15px', position: 'absolute'}}>
+                <div style={{padding: '15px'}}>
+                    <input placeholder="filter"></input>
                     <a className="resync-link" onClick={onCreate}>
                         <FontAwesomeIcon icon={faRedo} size="1x" />
                         <span style={{marginLeft: '3px'}}>Resync Local Styles</span>
@@ -72,10 +73,21 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                         themeList={filteredThemeList.length === 0 ? getThemeList() : filteredThemeList}
                     />
                 </div>
+                <div>
+                    <p>This is a popup</p>
+                </div>
                 <div style={{borderTop: '1px solid #F0F0F0', position: 'fixed', bottom: 0, width: '100%'}}>
-                    <button onClick={() => handleApplyTheme(selectedTheme)} className="apply-btn">
-                        Apply
-                    </button>
+                    <div>
+                        <select>
+                            <option value="applyToSelection">Apply to selection</option>
+                            <option value="applyToPage">Apply To Page</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button onClick={() => handleApplyTheme(selectedTheme)} className="apply-btn">
+                            Apply
+                        </button>
+                    </div>
                 </div>
             </React.Fragment>
         );
