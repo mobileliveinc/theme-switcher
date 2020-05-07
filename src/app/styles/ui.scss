@@ -113,3 +113,21 @@ input:focus {
     outline: none;
 }
 
+.footer_themeswitcher{
+    text-align: center;
+    background-color: rgb(244, 130, 69);
+    margin-top: 0;
+    margin-left: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    p{
+        padding: 4px;
+        margin: 0;
+        color: #ffffffde;
+        font-size: 12px;
+    }
+}
+

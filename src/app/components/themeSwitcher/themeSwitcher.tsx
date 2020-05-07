@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Apply from './ApplyWithButtons';
-import '../styles/ui.scss';
+import Apply from '../ApplyWithButtons';
+import './themeSwitcher.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faRedo, faBell} from '@fortawesome/free-solid-svg-icons';
 
@@ -31,7 +31,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
     };
     if (data && data.length === 0) {
         return (
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex'}} className="noThemesAvaile">
                 <div style={{textAlign: 'left', paddingTop: '60px', paddingLeft: '46px', paddingRight: '10px'}}>
                     <FontAwesomeIcon icon={faBell} size="lg" />
                 </div>

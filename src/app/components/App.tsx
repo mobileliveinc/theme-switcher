@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '../styles/ui.scss';
-import ThemeSwicther from './themeSwitcher';
+import ThemeSwicther from './themeSwitcher/themeSwitcher';
 // import Apply from './ApplyWithButtons';
 import OnBoadring from './onBoarding/onBoarding';
 
@@ -87,9 +87,12 @@ const App = ({}) => {
             ) : (
                 <OnBoadring handleOnboardingFinish={onBoardingDone} />
             )}
-            {/* <div style={{textAlign:"center", backgroundColor:'#F48245', marginTop:'72px', marginLeft:'-8px'}}>
-        <p style={{color:'white', padding:'2px'}}>Created by MobileLIVE</p>
-    </div> */}
+            <div
+                className="footer_themeswitcher"
+                style={{textAlign: 'center', backgroundColor: '#F48245', marginTop: '72px', marginLeft: '-8px'}}
+            >
+                <p style={{color: 'white', padding: '2px'}}>Created by MobileLIVE</p>
+            </div>
         </React.Fragment>
     );
 };
