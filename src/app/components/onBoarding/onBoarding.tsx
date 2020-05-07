@@ -66,19 +66,18 @@ const OnBoadring = ({handleOnboardingFinish}) => {
     return (
         <div>
             <OnBoadringSlide slide={slides[index]} revealFrom={revealFrom} skipIntro={handleOnboardingFinish} />
-            <div style={{textAlign: 'center'}}>
+            <div className="btn_slides" style={{textAlign: 'center'}}>
                 <button
-                    style={{marginTop: '50px'}}
                     className="primary-button"
                     onClick={index === slides.length - 1 ? () => handleOnboardingFinish() : () => setIndex(index + 1)}
                     // hidden={index !== slides.length - 1}
                 >
                     {index === slides.length - 1 ? 'Create Theme' : 'Next'}
                 </button>
+                <div className="slideDots" style={{textAlign: 'center'}}>
+                    {getButton(slides)}
+                </div>
             </div>
-            {/* <br /> */}
-            <div style={{textAlign: 'center'}}>{getButton(slides)}</div>
-            {/* <br /> */}
         </div>
     );
 };

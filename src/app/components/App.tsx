@@ -74,7 +74,7 @@ const App = ({}) => {
     if (dataLoaded === false) return null;
     return (
         <React.Fragment>
-            {isOnboardingDone ? (
+            {!isOnboardingDone ? (
                 <ThemeSwicther
                     data={data}
                     // onDelete={onDelete}
@@ -87,11 +87,8 @@ const App = ({}) => {
             ) : (
                 <OnBoadring handleOnboardingFinish={onBoardingDone} />
             )}
-            <div
-                className="footer_themeswitcher"
-                style={{textAlign: 'center', backgroundColor: '#F48245', marginTop: '72px', marginLeft: '-8px'}}
-            >
-                <p style={{color: 'white', padding: '2px'}}>Created by MobileLIVE</p>
+            <div className="footer_themeswitcher">
+                <p>Created by MobileLIVE</p>
             </div>
         </React.Fragment>
     );
