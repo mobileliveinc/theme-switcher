@@ -1,0 +1,31 @@
+@import '../../styles/ui.scss';
+
+
+.react-reveal {
+  position: relative;
+
+  img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .skip-inro-link {
+    color: #f48245;
+    display: inline-block;
+    position: absolute;
+    bottom: 15px;
+    left: 32px;
+    cursor: pointer;
+  }
+
+  p {
+    color: #101010;
+    line-height: 1.5;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+}
+

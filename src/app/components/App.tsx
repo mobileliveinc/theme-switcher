@@ -2,7 +2,7 @@ import * as React from 'react';
 import '../styles/ui.scss';
 import ThemeSwicther from './themeSwitcher';
 // import Apply from './ApplyWithButtons';
-import OnBoadring from './onBorading';
+import OnBoadring from './onBoarding/onBoarding';
 
 // declare function require(path: string): any;
 
@@ -74,7 +74,7 @@ const App = ({}) => {
     if (dataLoaded === false) return null;
     return (
         <React.Fragment>
-            {isOnboardingDone ? (
+            {!isOnboardingDone ? (
                 <ThemeSwicther
                     data={data}
                     // onDelete={onDelete}
