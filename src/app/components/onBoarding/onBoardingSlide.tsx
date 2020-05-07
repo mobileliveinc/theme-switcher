@@ -16,7 +16,7 @@ const OnBoadringSlide = ({slide, revealFrom, skipIntro}) => {
             </div>
             <div style={{padding: '32px'}}>
                 <h3>{title}</h3>
-                <p>{description}</p>
+                <p style={{whiteSpace: 'pre-line'}}>{description}</p>
             </div>
         </Fade>
     );

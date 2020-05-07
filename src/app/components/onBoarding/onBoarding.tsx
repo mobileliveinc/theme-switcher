@@ -9,12 +9,26 @@ const OnBoadring = ({handleOnboardingFinish}) => {
         {
             image: 'themeSwitcherScreen1.png',
             title: 'Welcome To Theme Switcher',
-            description: 'Theme Switcher let\'s you quickly create color themes from your published Figma styles. Theme Switcher does this by matching styles with the same names across themes.',
+            description: `Quickly create and switch themes from multi-brand stylesheets and make your workflow is easy 
+
+            Theme Switcher allows you to :
+            
+             🔁Switch Multibrand Stylesheets
+             🔄Sync from Local Style
+             ✅ Apply Color Themes
+            `,
         },
         {
             image: 'themeSwitcherScreen2.png',
             title: 'Start Creating Themes',
-            description: 'Create Local Styles, styles must use name/ in in order for themes to work',
+            description: `How does it work? 🤔
+
+            1. Create new Figma file and then create local styles in the file using + to add new colour style
+            
+            2. Name your style using theme/use/variation naming convention
+            
+            3. Select Page or Frame to apply theme.
+            `,
         },
     ];
     const sliderButtonStyles = {
