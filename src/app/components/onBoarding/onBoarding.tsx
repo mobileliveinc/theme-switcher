@@ -10,9 +10,7 @@ const OnBoadring = ({handleOnboardingFinish}) => {
             image: 'themeSwitcherScreen1.png',
             title: 'Welcome To Theme Switcher',
             description: `Quickly create and switch themes from multi-brand stylesheets and make your workflow is easy 
-
             Theme Switcher allows you to :
-            
              🔁Switch Multibrand Stylesheets
              🔄Sync from Local Style
              ✅ Apply Color Themes
@@ -24,9 +22,7 @@ const OnBoadring = ({handleOnboardingFinish}) => {
             description: `How does it work? 🤔
 
             1. Create new Figma file and then create local styles in the file using + to add new colour style
-            
             2. Name your style using theme/use/variation naming convention
-            
             3. Select Page or Frame to apply theme.
             `,
         },
