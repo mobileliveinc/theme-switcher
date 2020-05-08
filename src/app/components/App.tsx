@@ -76,7 +76,7 @@ const App = ({}) => {
         <React.Fragment>
             {isOnboardingDone ? (
                 <ThemeSwicther
-                    data={data}
+                    data={[]}
                     // onDelete={onDelete}
                     onCreate={onCreate}
                     appliedTheme={appliedTheme}

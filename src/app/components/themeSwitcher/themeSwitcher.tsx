@@ -32,7 +32,10 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                 <div style={{textAlign: 'left', paddingTop: '60px', paddingLeft: '46px', paddingRight: '10px'}}>
                     <FontAwesomeIcon icon={faBell} size="lg" />
                 </div>
-                <div style={{textAlign: 'left', paddingTop: '54px', paddingRight: '54px'}}>
+                <div
+                    className="themeSwitcherContent"
+                    style={{textAlign: 'left', paddingTop: '58px', paddingRight: '54px'}}
+                >
                     <h3 style={{display: 'inline', marginLeft: '3px'}}>No themes available</h3>
                     <p>You dont have any themes create. Sync local styles to get started</p>
                     <div style={{textAlign: 'center'}}>
