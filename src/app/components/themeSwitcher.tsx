@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Apply from '../ApplyWithButtons';
-import './themeSwitcher.scss';
+import Apply from './ApplyWithButtons';
+import '../styles/ui.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faRedo, faBell} from '@fortawesome/free-solid-svg-icons';
 
@@ -12,12 +12,17 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
         setFilteredThemeList([]);
     }, []);
 
-    const handleFilterChange = async event => {
+    const handleFilterChange = event => {
         let value = event.target.value;
         let results = [];
-        const themes = await getThemeList();
+        console.log('here here');
         if (value) {
-            results = themes.filter(theme => theme.toUpperCase().indexOf(value.toUpperCase()) >= 0);
+            getThemeList().forEach(element => {
+                if (element.includes(value)) {
+                    results.push(element);
+                }
+            });
+            console.log('results are ', results);
             setFilteredThemeList(results);
         } else {
             setFilteredThemeList(getThemeList());
@@ -28,7 +33,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
     };
     if (data && data.length === 0) {
         return (
-            <div style={{display: 'flex'}} className="noThemesAvaile">
+            <div style={{display: 'flex'}}>
                 <div style={{textAlign: 'left', paddingTop: '60px', paddingLeft: '46px', paddingRight: '10px'}}>
                     <FontAwesomeIcon icon={faBell} size="lg" />
                 </div>
@@ -47,7 +52,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
         return (
             <React.Fragment>
                 <div style={{padding: '15px'}}>
-                    <input placeholder="filter" onChange={handleFilterChange}></input>
+                    {/* <input placeholder="filter" onChange={(event) => {handleFilterChange(event)}}></input> */}
                     <a className="resync-link" onClick={onCreate}>
                         <FontAwesomeIcon icon={faRedo} size="1x" />
                         <span style={{marginLeft: '3px'}}>Resync Local Styles</span>
@@ -70,7 +75,10 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                     />
                 </div>
                 <div>
-                    <p>This is a popup</p>
+                    <input type="text" placeholder="filter ittttt" onChange={handleFilterChange}></input>
+                </div>
+                <div>
+                    <p>This is a popup other</p>
                 </div>
                 <div style={{borderTop: '1px solid #F0F0F0', position: 'fixed', bottom: 0, width: '100%'}}>
                     <div>
