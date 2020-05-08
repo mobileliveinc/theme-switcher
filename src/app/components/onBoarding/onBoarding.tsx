@@ -9,25 +9,17 @@ const OnBoadring = ({handleOnboardingFinish}) => {
         {
             image: 'themeSwitcherScreen1.png',
             title: 'Welcome To Theme Switcher',
-            description: `Quickly create and switch themes from multi-brand stylesheets and make your workflow is easy 
+            description: `Theme Switcher let's you quickly create color themes from your published Figma styles. 
 
-            Theme Switcher allows you to :
-            
-             🔁Switch Multibrand Stylesheets
-             🔄Sync from Local Style
-             ✅ Apply Color Themes
+            Theme Switcher does this by matching styles with the same names across themes.
             `,
         },
         {
             image: 'themeSwitcherScreen2.png',
-            title: 'Start Creating Themes',
-            description: `How does it work? 🤔
+            title: 'Instructions',
+            description: `Create Local Styles, they must use following naming convention: theme/use/variation.
 
-            1. Create new Figma file and then create local styles in the file using + to add new colour style
-            
-            2. Name your style using theme/use/variation naming convention
-            
-            3. Select Page or Frame to apply theme.
+            Example: Figma/primary/default
             `,
         },
     ];
@@ -66,19 +58,18 @@ const OnBoadring = ({handleOnboardingFinish}) => {
     return (
         <div>
             <OnBoadringSlide slide={slides[index]} revealFrom={revealFrom} skipIntro={handleOnboardingFinish} />
-            <div style={{textAlign: 'center'}}>
+            <div className="btn_slides" style={{textAlign: 'center'}}>
                 <button
-                    style={{marginTop: '50px'}}
                     className="primary-button"
                     onClick={index === slides.length - 1 ? () => handleOnboardingFinish() : () => setIndex(index + 1)}
                     // hidden={index !== slides.length - 1}
                 >
                     {index === slides.length - 1 ? 'Create Theme' : 'Next'}
                 </button>
+                <div className="slideDots" style={{textAlign: 'center'}}>
+                    {getButton(slides)}
+                </div>
             </div>
-            {/* <br /> */}
-            <div style={{textAlign: 'center'}}>{getButton(slides)}</div>
-            {/* <br /> */}
         </div>
     );
 };

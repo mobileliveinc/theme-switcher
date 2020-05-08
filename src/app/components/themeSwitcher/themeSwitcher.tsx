@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Apply from '../ApplyWithButtons';
+import Apply from '../Applytheme/ApplyWithButtons';
 import './themeSwitcher.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faRedo, faBell} from '@fortawesome/free-solid-svg-icons';
@@ -46,7 +46,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
     } else {
         return (
             <React.Fragment>
-                <div style={{padding: '15px'}}>
+                <div style={{padding: '20px'}}>
                     <input placeholder="filter" onChange={handleFilterChange}></input>
                     <a className="resync-link" onClick={onCreate}>
                         <FontAwesomeIcon icon={faRedo} size="1x" />
@@ -69,10 +69,10 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                         themeList={filteredThemeList.length === 0 ? getThemeList() : filteredThemeList}
                     />
                 </div>
-                <div>
+                {/* <div>
                     <p>This is a popup</p>
-                </div>
-                <div style={{borderTop: '1px solid #F0F0F0', position: 'fixed', bottom: 0, width: '100%'}}>
+                </div> */}
+                <div className="themeApplySelect">
                     <div>
                         <select>
                             <option value="applyToSelection">Apply to selection</option>

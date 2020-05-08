@@ -65,6 +65,8 @@ input:focus {
 
 #react-page {
     width: 380px;
+    position: relative;
+    height: 100%;
 }
 .selec-theme {
     margin: 20px;
@@ -116,7 +118,6 @@ input:focus {
 .footer_themeswitcher{
     text-align: center;
     background-color: rgb(244, 130, 69);
-    margin-top: 0;
     margin-left: 0;
     position: absolute;
     left: 0;

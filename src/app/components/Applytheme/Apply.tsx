@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../styles/ui.scss';
+import './Applytheme.scss';
 
 // declare function require(path: string): any;
 
