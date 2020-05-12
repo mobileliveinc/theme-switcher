@@ -2,11 +2,14 @@ import * as React from 'react';
 import Apply from '../Applytheme/ApplyWithButtons';
 import './themeSwitcher.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faRedo, faBell} from '@fortawesome/free-solid-svg-icons';
+import {faRedo, faBell, faChevronDown, faSearch} from '@fortawesome/free-solid-svg-icons';
 
 const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getThemeList}) => {
     const [filteredThemeList, setFilteredThemeList] = React.useState([]);
     const [selectedTheme, setSelectedTheme] = React.useState('');
+    const [filterInputClassName, setFilterInputClassName] = React.useState('');
+    const show = 'SHOW';
+    const hide = 'hide';
 
     React.useEffect(() => {
         setFilteredThemeList([]);
@@ -25,6 +28,14 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
     };
     const handleThemeSelect = event => {
         setSelectedTheme(event.target.value);
+    };
+    const handleFilterToggle = (event, action) => {
+        console.log('Action is ', action);
+        if (action === show) {
+            setFilterInputClassName('className');
+        } else if (action === hide && event.target.value === '') {
+            setFilterInputClassName('');
+        }
     };
     if (data && data.length === 0) {
         return (
@@ -50,11 +61,34 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
         return (
             <React.Fragment>
                 <div style={{padding: '20px'}}>
-                    <input placeholder="filter" onChange={handleFilterChange}></input>
-                    <a className="resync-link" onClick={onCreate}>
-                        <FontAwesomeIcon icon={faRedo} size="1x" />
-                        <span style={{marginLeft: '3px'}}>Resync Local Styles</span>
-                    </a>
+                    <div className="filter_holder">
+                        <a className="resync-link" onClick={onCreate}>
+                            <FontAwesomeIcon icon={faRedo} size="1x" />
+                            <span style={{marginLeft: '3px'}}>Resync Local Styles</span>
+                        </a>
+                        <div className="searchField">
+                            <label htmlFor="searchme"></label>
+                            <input
+                                id="searchme"
+                                placeholder="filter"
+                                onChange={handleFilterChange}
+                                onBlur={event => {
+                                    handleFilterToggle(event, hide);
+                                }}
+                            ></input>
+                            <a href="" className={filterInputClassName}>
+                                <FontAwesomeIcon
+                                    className="chevronSearch"
+                                    icon={faSearch}
+                                    size="1x"
+                                    onClick={event => {
+                                        handleFilterToggle(event, show);
+                                    }}
+                                />
+                            </a>
+                        </div>
+                    </div>
+
                     <h3 style={{marginTop: '34px'}}>Found these themes</h3>
                     <Apply
                         appliedTheme={selectedTheme ? selectedTheme : appliedTheme}
@@ -63,7 +97,8 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                     />
                 </div>
                 <div className="themeApplySelect">
-                    <div>
+                    <div className="selectHolder">
+                        <FontAwesomeIcon className="chevron" icon={faChevronDown} size="1x" />
                         <select>
                             <option value="applyToSelection">Apply to selection</option>
                             <option value="applyToPage">Apply To Page</option>
