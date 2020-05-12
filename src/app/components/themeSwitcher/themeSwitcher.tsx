@@ -56,25 +56,12 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                         <span style={{marginLeft: '3px'}}>Resync Local Styles</span>
                     </a>
                     <h3 style={{marginTop: '34px'}}>Found these themes</h3>
-                    {/* <div className="wrapper">
-        {data && data.length > 0 && (
-            <button id="create" onClick={onDelete}>
-                Delete Current Themes
-            </button>
-        )}
-        <button id="create" onClick={onCreate}>
-            Create Theme with Local Colors
-        </button>
-    </div> */}
                     <Apply
                         appliedTheme={selectedTheme ? selectedTheme : appliedTheme}
                         handleSelect={handleThemeSelect}
                         themeList={filteredThemeList.length === 0 ? getThemeList() : filteredThemeList}
                     />
                 </div>
-                {/* <div>
-                    <p>This is a popup</p>
-                </div> */}
                 <div className="themeApplySelect">
                     <div>
                         <select>

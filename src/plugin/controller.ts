@@ -3,7 +3,15 @@ let collectLocalColors = [];
 let currenThemeList = [];
 let getSelectedTheme = '';
 
-figma.ui.onmessage = (msg: {type: string; themeData: any; count: any; themeName: string; data: any}) => {
+figma.ui.onmessage = (msg: {
+    type: string;
+    themeData: any;
+    count: any;
+    themeName: string;
+    data: any;
+    width: any;
+    height: any;
+}) => {
     if (msg.type === 'create-theme') {
         getLocalPaintsArray('color');
     }
@@ -38,6 +46,10 @@ figma.ui.onmessage = (msg: {type: string; themeData: any; count: any; themeName:
     }
     if (msg.type === 'on-boarding-done') {
         setIsOnboardingDone();
+    }
+    if (msg.type === 'resize-plugin-modal') {
+        console.log('message is ', msg);
+        figma.ui.resize(msg.width, msg.height);
     }
 };
 

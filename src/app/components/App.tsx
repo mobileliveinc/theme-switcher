@@ -1,7 +1,6 @@
 import * as React from 'react';
 import '../styles/ui.scss';
 import ThemeSwicther from './themeSwitcher/themeSwitcher';
-// import Apply from './ApplyWithButtons';
 import OnBoadring from './onBoarding/onBoarding';
 
 // declare function require(path: string): any;
@@ -39,14 +38,6 @@ const App = ({}) => {
         parent.postMessage({pluginMessage: {type: 'create-theme'}}, '*');
     }, []);
 
-    // const onDelete = React.useCallback(() => {
-    //     parent.postMessage({pluginMessage: {type: 'remove-theme'}}, '*');
-    // }, []);
-
-    // const onClose = React.useCallback(() => {
-    //     parent.postMessage({pluginMessage: {type: 'close-plugin'}}, '*');
-    // }, []);
-
     const handleApplyTheme = value => {
         parent.postMessage({pluginMessage: {type: 'apply-theme', themeName: value}}, '*');
     };
@@ -54,6 +45,10 @@ const App = ({}) => {
     const onBoardingDone = () => {
         setIsOnboardingDone(true);
         parent.postMessage({pluginMessage: {type: 'on-boarding-done'}}, '*');
+    };
+
+    const resize = (width, height) => {
+        parent.postMessage({pluginMessage: {type: 'resize-plugin-modal', width: width, height: height}}, '*');
     };
 
     React.useEffect(() => {
@@ -70,19 +65,23 @@ const App = ({}) => {
         const dataList = data ? [...new Set(data.map(item => item.theme))] : [];
         return dataList;
     };
-    console.log('isOnboardingDone state is ', isOnboardingDone);
     if (dataLoaded === false) return null;
+    if (data.length === 0 && isOnboardingDone) {
+        resize(380, 400);
+    }
+    if (data && isOnboardingDone) {
+        console.log('resizing....');
+        resize(380, 450);
+    }
     return (
         <React.Fragment>
             {isOnboardingDone ? (
                 <ThemeSwicther
-                    data={[]}
-                    // onDelete={onDelete}
+                    data={data}
                     onCreate={onCreate}
                     appliedTheme={appliedTheme}
                     handleApplyTheme={handleApplyTheme}
                     getThemeList={getThemeList}
-                    // onClose={onClose}
                 />
             ) : (
                 <OnBoadring handleOnboardingFinish={onBoardingDone} />
