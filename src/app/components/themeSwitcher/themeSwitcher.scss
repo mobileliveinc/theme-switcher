@@ -1,8 +1,23 @@
 @import '../../styles/ui.scss';
+//@import '../../assets/css/ico-fonts.css';
 
 
-.noThemesAvaile{
-  p{
+
+.filter_holder{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .searchField{
+    input{
+      border: none;
+    }
+  }
+  .resync-link{
+    margin-bottom: 0;
+  }
+}
+.noThemesAvaile {
+  p {
     margin: 3px 0 5px 2px;
     color: #101010;
     line-height: 1.5;
@@ -10,14 +25,62 @@
     font-weight: 300;
   }
 }
-.apply-btn{
+
+.apply-btn {
+  border: none;
   background-color: #f48245;
   height: 30px;
-  width: 130px;
+  font-size: 13px;
+  line-height: 1;
+  width: 100px;
+  color: #fff;
+  outline: none;
   border-radius: 5px;
+  &.disabled{
+    background-color: #A7A7A7;
+  }
 }
-.themeSwitcherContent{
-  h3{
+
+.themeSwitcherContent {
+  h3 {
     margin-top: 10px;
+  }
+}
+.themeApplySelect{
+  align-items: flex-start;
+  padding: 24px 28px;
+}
+
+.selectHolder {
+  position: relative;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 135px;
+  width: 100%;
+  font-size: 12px;
+  pointer-events: auto;
+
+  select {
+    border-radius: 0;
+    border: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    padding: 3px 30px 3px 10px;
+    height: 40px;
+    width: 100%;
+    color: #515152;;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    background-color: #fff;
+  }
+
+  .chevron {
+    color: darkgray;
+    position: absolute;
+    right: 0;
   }
 }

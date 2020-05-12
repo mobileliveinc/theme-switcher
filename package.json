@@ -7,6 +7,7 @@
 		"webpack": "webpack",
 		"build": "npm run webpack --mode=production",
 		"build:watch": "npm run webpack --mode=development --watch",
+		"build:figma": "yarn build:watch",
 		"prettier:format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,json}' "
 	},
 	"dependencies": {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Apply from '../Applytheme/ApplyWithButtons';
 import './themeSwitcher.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faRedo, faBell} from '@fortawesome/free-solid-svg-icons';
+import {faRedo, faBell, faChevronDown, faSearch} from '@fortawesome/free-solid-svg-icons';
 
 const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getThemeList}) => {
     const [filteredThemeList, setFilteredThemeList] = React.useState([]);
@@ -50,11 +50,20 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
         return (
             <React.Fragment>
                 <div style={{padding: '20px'}}>
-                    <input placeholder="filter" onChange={handleFilterChange}></input>
-                    <a className="resync-link" onClick={onCreate}>
-                        <FontAwesomeIcon icon={faRedo} size="1x" />
-                        <span style={{marginLeft: '3px'}}>Resync Local Styles</span>
-                    </a>
+                    <div className="filter_holder">
+                        <a className="resync-link" onClick={onCreate}>
+                            <FontAwesomeIcon icon={faRedo} size="1x" />
+                            <span style={{marginLeft: '3px'}}>Resync Local Styles</span>
+                        </a>
+                        <div className="searchField">
+                            <label htmlFor="searchme"></label>
+                            <input id="searchme" placeholder="filter" onChange={handleFilterChange}></input>
+                            <a href="" className="">
+                                <FontAwesomeIcon className="chevronSearch" icon={faSearch} size="1x" />
+                            </a>
+                        </div>
+                    </div>
+
                     <h3 style={{marginTop: '34px'}}>Found these themes</h3>
                     {/* <div className="wrapper">
         {data && data.length > 0 && (
@@ -76,7 +85,8 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                     <p>This is a popup</p>
                 </div> */}
                 <div className="themeApplySelect">
-                    <div>
+                    <div className="selectHolder">
+                        <FontAwesomeIcon className="chevron" icon={faChevronDown} size="1x" />
                         <select>
                             <option value="applyToSelection">Apply to selection</option>
                             <option value="applyToPage">Apply To Page</option>
