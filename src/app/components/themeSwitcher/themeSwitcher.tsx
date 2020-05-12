@@ -76,7 +76,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                                     handleFilterToggle(event, hide);
                                 }}
                             ></input>
-                            <a href="" className={filterInputClassName}>
+                            <a className={filterInputClassName}>
                                 <FontAwesomeIcon
                                     className="chevronSearch"
                                     icon={faSearch}
