@@ -24,14 +24,14 @@ const OnBoadringSlide = ({slide, revealFrom, skipIntro}) => {
                     Skip Instructions
                 </a>
             </div>
-            <div style={{padding: '32px'}}>
+            <div className="text-holder" style={{padding: '32px'}}>
                 <h3>{title}</h3>
                 {splitDescription ? (
                     getSplitDescription(description)
                 ) : (
                     <p style={{whiteSpace: 'pre-line'}}>{description}</p>
                 )}
-                {note && <p>{note}</p>}
+                {note && <p className="text-light">{note}</p>}
             </div>
         </Fade>
     );

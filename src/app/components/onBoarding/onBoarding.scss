@@ -12,6 +12,8 @@
   }
   h3{
     margin-top: 0;
+    font-size: 14px;
+    font-weight: 600;
   }
 
   .skip-inro-link {
@@ -19,6 +21,8 @@
     display: inline-block;
     position: absolute;
     bottom: 15px;
+    font-size: 14px;
+    font-weight: 300;
     left: 32px;
     cursor: pointer;
   }
@@ -29,7 +33,17 @@
     font-size: 14px;
     font-weight: 300;
   }
+  b{
+    font-size: 14px;
+  }
 
+}
+.text-holder{
+  box-sizing: border-box;
+  min-height: 215px;
+  .text-light{
+    color:#B8B8B8;
+  }
 }
 .btn_slides{
   //margin-bottom: 40px;
