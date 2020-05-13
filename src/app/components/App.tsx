@@ -82,7 +82,7 @@ const App = ({}) => {
     }
     return (
         <React.Fragment>
-            {isOnboardingDone ? (
+            {!isOnboardingDone ? (
                 <ThemeSwicther
                     data={data}
                     onCreate={onCreate}
