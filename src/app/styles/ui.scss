@@ -76,14 +76,16 @@ input:focus {
 .slider-button {
     z-index: 99;
     border-radius: 50%;
-    width: 10px;
-    height: 10px;
+    width: 7px;
+    height: 7px;
     display: initial;
     align-items: center;
     justify-content: center;
     margin-top: 13%;
-    margin-left: 4px;
     padding: 2px;
+    & + &{
+        margin-left: 4px;
+    }
 }
 .primary-button {
     border-radius: 5px;
@@ -128,7 +130,8 @@ input:focus {
         padding: 4px;
         margin: 0;
         color: #ffffffde;
-        font-size: 12px;
+        font-size: 10px;
+        line-height: 11px;
     }
 }
 
