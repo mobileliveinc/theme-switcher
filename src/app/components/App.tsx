@@ -10,7 +10,7 @@ const App = ({}) => {
     const [data, setData] = React.useState([]);
     const [isOnboardingDone, setIsOnboardingDone] = React.useState(false);
     const [dataLoaded, setDataLoaded] = React.useState(false);
-    const [applyType, setApplyType] = React.useState('selection');
+    // const [applyType, setApplyType] = React.useState('selection');
 
     React.useEffect(() => {
         (async function() {
@@ -40,7 +40,7 @@ const App = ({}) => {
     }, []);
 
     const handleApplyTheme = value => {
-        parent.postMessage({pluginMessage: {type: 'apply-theme', themeName: value, selectType: applyType}}, '*');
+        parent.postMessage({pluginMessage: {type: 'apply-theme', themeName: value, selectType: 'applyType'}}, '*');
     };
 
     const onBoardingDone = () => {
