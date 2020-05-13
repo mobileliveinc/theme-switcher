@@ -11,7 +11,7 @@ const OnBoadring = ({handleOnboardingFinish}) => {
             backgroundColor: '#F48245',
         },
         inActive: {
-            backgroundColor: '#fff',
+            backgroundColor: 'rgba(244, 130, 69, 20%)',
         },
     };
     const [index, setIndex] = React.useState(0);
