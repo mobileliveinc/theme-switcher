@@ -10,6 +10,7 @@ const App = ({}) => {
     const [data, setData] = React.useState([]);
     const [isOnboardingDone, setIsOnboardingDone] = React.useState(false);
     const [dataLoaded, setDataLoaded] = React.useState(false);
+    const [applyType, setApplyType] = React.useState('selection');
 
     React.useEffect(() => {
         (async function() {
@@ -39,7 +40,7 @@ const App = ({}) => {
     }, []);
 
     const handleApplyTheme = value => {
-        parent.postMessage({pluginMessage: {type: 'apply-theme', themeName: value}}, '*');
+        parent.postMessage({pluginMessage: {type: 'apply-theme', themeName: value, selectType: applyType}}, '*');
     };
 
     const onBoardingDone = () => {
@@ -50,6 +51,9 @@ const App = ({}) => {
     const resize = (width, height) => {
         parent.postMessage({pluginMessage: {type: 'resize-plugin-modal', width: width, height: height}}, '*');
     };
+    // const handleApplyTypeSelect = (type) => {
+    //     setApplyType(type);
+    // }
 
     React.useEffect(() => {
         // This is how we read messages sent from the plugin controller
@@ -65,12 +69,15 @@ const App = ({}) => {
         const dataList = data ? [...new Set(data.map(item => item.theme))] : [];
         return dataList;
     };
+    // const selectAll = () => {
+
+    //     parent.postMessage({pluginMessage: {type: 'select-all'}}, '*');
+    // }
     if (dataLoaded === false) return null;
     if (data.length === 0 && isOnboardingDone) {
         resize(380, 400);
     }
     if (data && isOnboardingDone) {
-        console.log('resizing....');
         resize(380, 450);
     }
     return (
@@ -86,6 +93,7 @@ const App = ({}) => {
             ) : (
                 <OnBoadring handleOnboardingFinish={onBoardingDone} />
             )}
+            {/* <button onClick={() => {handleApplyTypeSelect("all")}}>Test apply all</button> */}
             <div className="footer_themeswitcher">
                 <p>Created by MobileLIVE</p>
             </div>

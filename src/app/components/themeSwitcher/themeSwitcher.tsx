@@ -66,7 +66,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                             <FontAwesomeIcon icon={faRedo} size="1x" />
                             <span style={{marginLeft: '3px'}}>Resync Local Styles</span>
                         </a>
-                        <div className="searchField">
+                        <div className={`searchField ${filterInputClassName}`}>
                             <label htmlFor="searchme"></label>
                             <input
                                 id="searchme"
@@ -76,7 +76,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                                     handleFilterToggle(event, hide);
                                 }}
                             ></input>
-                            <a className={filterInputClassName}>
+                            <a className="">
                                 <FontAwesomeIcon
                                     className="chevronSearch"
                                     icon={faSearch}

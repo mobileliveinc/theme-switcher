@@ -6,6 +6,7 @@ let getSelectedTheme = '';
 figma.ui.onmessage = (msg: {
     type: string;
     themeData: any;
+    selectType: any;
     count: any;
     themeName: string;
     data: any;
@@ -32,7 +33,7 @@ figma.ui.onmessage = (msg: {
     }
     if (msg.type === 'apply-theme') {
         getSelectedTheme = msg.themeName;
-        applyTheme('selection', msg.themeName);
+        applyTheme(msg.selectType, msg.themeName);
         figma.ui.postMessage({
             type: 'theme-appllied',
             message: `apply-theme Theme`,
@@ -48,8 +49,10 @@ figma.ui.onmessage = (msg: {
         setIsOnboardingDone();
     }
     if (msg.type === 'resize-plugin-modal') {
-        console.log('message is ', msg);
         figma.ui.resize(msg.width, msg.height);
+    }
+    if (msg.type === 'select-all') {
+        selectAllFrames();
     }
 };
 
@@ -64,6 +67,20 @@ function deleteCurrentThemes() {
     figma.ui.postMessage({
         type: 'delete-theme',
     });
+}
+
+function selectAllFrames() {
+    let children = figma.root.children;
+    let frames = [];
+    children.forEach(child => {
+        child.children.forEach(grandChild => {
+            if (grandChild.type === 'FRAME') {
+                frames.push(grandChild);
+            }
+        });
+    });
+    console.log('frames are ', frames);
+    console.log('current selection ', figma.currentPage.selection);
 }
 
 function setIsOnboardingDone() {
@@ -238,6 +255,7 @@ function applyTheme(applyTo: string, themeName: any) {
                 }
             } else {
                 if (figma.currentPage.children) {
+                    console.log('resetting nodes ');
                     nodes = figma.currentPage.children;
                 } else {
                     figma.notify('Please make a selection');
