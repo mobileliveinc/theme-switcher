@@ -4,7 +4,15 @@ import './themeSwitcher.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faRedo, faBell, faSearch} from '@fortawesome/free-solid-svg-icons';
 // faChevronDown
-const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getThemeList, handleApplyTypeSelect}) => {
+const ThemeSwicther = ({
+    data,
+    onCreate,
+    appliedTheme,
+    handleApplyTheme,
+    getThemeList,
+    handleApplyTypeSelect,
+    isPopuphidden,
+}) => {
     const [filteredThemeList, setFilteredThemeList] = React.useState([]);
     const [selectedTheme, setSelectedTheme] = React.useState('');
     const [filterInputClassName, setFilterInputClassName] = React.useState('');
@@ -40,6 +48,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
             setFilterInputClassName('');
         }
     };
+    console.log('is popup hidden is ', isPopuphidden);
     if (data && data.length === 0) {
         return (
             <div style={{display: 'flex'}} className="noThemesAvaile">
@@ -100,10 +109,12 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                     />
                 </div>
                 <div className="themeSelectMessage">
-                    <div className="msg-wrap">
-                        <img src={require(`../../assets/clap.png`)} alt="clap_icon" />
-                        <span>Successfully apllied Rogers theme</span>
-                    </div>
+                    {!isPopuphidden && (
+                        <div className="msg-wrap">
+                            <img src={require(`../../assets/clap.png`)} alt="clap_icon" />
+                            <span>Successfully apllied Rogers theme</span>
+                        </div>
+                    )}
                     <a className="reset-link">Reset Style</a>
                 </div>
                 <div className="themeApplySelect">

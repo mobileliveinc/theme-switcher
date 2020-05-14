@@ -11,6 +11,7 @@ const App = ({}) => {
     const [isOnboardingDone, setIsOnboardingDone] = React.useState(false);
     const [dataLoaded, setDataLoaded] = React.useState(false);
     const [applyType, setApplyType] = React.useState('selection');
+    const [applyThemePopupHidden, setApplyThemePopupHidden] = React.useState(true);
 
     React.useEffect(() => {
         (async function() {
@@ -40,7 +41,11 @@ const App = ({}) => {
     }, []);
 
     const handleApplyTheme = value => {
-        console.log('btn disabled');
+        console.log('here with value');
+        setApplyThemePopupHidden(false);
+        setTimeout(() => {
+            setApplyThemePopupHidden(true);
+        }, 2000);
         parent.postMessage({pluginMessage: {type: 'apply-theme', themeName: value, selectType: applyType}}, '*');
     };
 
@@ -53,7 +58,6 @@ const App = ({}) => {
         parent.postMessage({pluginMessage: {type: 'resize-plugin-modal', width: width, height: height}}, '*');
     };
     const handleApplyTypeSelect = type => {
-        console.log('type is ', type);
         setApplyType(type);
     };
 
@@ -91,6 +95,7 @@ const App = ({}) => {
                     appliedTheme={appliedTheme}
                     handleApplyTheme={handleApplyTheme}
                     handleApplyTypeSelect={handleApplyTypeSelect}
+                    isPopuphidden={applyThemePopupHidden}
                     getThemeList={getThemeList}
                 />
             ) : (
