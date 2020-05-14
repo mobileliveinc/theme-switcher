@@ -12,6 +12,7 @@ const ThemeSwicther = ({
     getThemeList,
     handleApplyTypeSelect,
     isPopuphidden,
+    currentSelectionType,
 }) => {
     const [filteredThemeList, setFilteredThemeList] = React.useState([]);
     const [selectedTheme, setSelectedTheme] = React.useState('');
@@ -23,6 +24,12 @@ const ThemeSwicther = ({
 
     React.useEffect(() => {
         setFilteredThemeList([]);
+    }, []);
+
+    React.useEffect(() => {
+        document.getElementById('react-page').addEventListener('click', () => {
+            setSelectionMenuHidden(true);
+        });
     }, []);
 
     const handleFilterChange = async event => {
@@ -40,13 +47,17 @@ const ThemeSwicther = ({
         setThemeReselected(true);
         setSelectedTheme(event.target.value);
     };
-    const handleFilterToggle = (event, action) => {
+    const handleFilterToggle = action => {
         console.log('Action is ', action);
         if (action === show) {
             setFilterInputClassName('focus');
-        } else if (action === hide && event.target.value === '') {
+        } else {
             setFilterInputClassName('');
         }
+    };
+    const handleResetStyle = () => {
+        setSelectedTheme('default');
+        handleApplyTheme('default');
     };
     console.log('is popup hidden is ', isPopuphidden);
     if (data && data.length === 0) {
@@ -82,10 +93,9 @@ const ThemeSwicther = ({
                             <label htmlFor="searchme"></label>
                             <input
                                 id="searchme"
-                                placeholder="filter"
                                 onChange={handleFilterChange}
-                                onBlur={event => {
-                                    handleFilterToggle(event, hide);
+                                onBlur={() => {
+                                    handleFilterToggle(hide);
                                 }}
                             ></input>
                             <a className="search-btn">
@@ -93,8 +103,8 @@ const ThemeSwicther = ({
                                     className="chevronSearch"
                                     icon={faSearch}
                                     size="1x"
-                                    onClick={event => {
-                                        handleFilterToggle(event, show);
+                                    onClick={() => {
+                                        handleFilterToggle(filterInputClassName === '' ? show : hide);
                                     }}
                                 />
                             </a>
@@ -112,18 +122,15 @@ const ThemeSwicther = ({
                     {!isPopuphidden && (
                         <div className="msg-wrap">
                             <img src={require(`../../assets/clap.png`)} alt="clap_icon" />
-                            <span>Successfully apllied Rogers theme</span>
+                            <span>{`Successfully apllied ${selectedTheme} theme`}</span>
                         </div>
                     )}
-                    <a className="reset-link">Reset Style</a>
+                    <a className="reset-link" onClick={handleResetStyle}>
+                        Reset Style
+                    </a>
                 </div>
                 <div className="themeApplySelect">
                     <div className="selectHolder">
-                        {/* <FontAwesomeIcon className="chevron" icon={faChevronDown} size="1x" />
-                        <select onChange={handleApplyTypeSelect}>
-                            <option value="selection">Apply to selection</option>
-                            <option value="all">Apply to all</option>
-                        </select> */}
                         <button
                             onClick={() => {
                                 setSelectionMenuHidden(!selectionMenuHidden);
@@ -134,6 +141,7 @@ const ThemeSwicther = ({
                         </button>
                         <ul className="drpdown" hidden={selectionMenuHidden}>
                             <li
+                                className={currentSelectionType === 'selection' ? 'active' : ''}
                                 onClick={() => {
                                     handleApplyTypeSelect('selection');
                                 }}
@@ -142,6 +150,7 @@ const ThemeSwicther = ({
                                 Apply to selection
                             </li>
                             <li
+                                className={currentSelectionType === 'all' ? 'active' : ''}
                                 onClick={() => {
                                     handleApplyTypeSelect('all');
                                 }}
@@ -154,7 +163,7 @@ const ThemeSwicther = ({
                     <div>
                         <button
                             onClick={() => handleApplyTheme(selectedTheme)}
-                            className="apply-btn"
+                            className={`apply-btn ${!themeReselected ? 'disabled' : ''}`}
                             disabled={!themeReselected}
                         >
                             Apply

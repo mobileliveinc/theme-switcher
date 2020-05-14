@@ -97,6 +97,7 @@ const App = ({}) => {
                     handleApplyTypeSelect={handleApplyTypeSelect}
                     isPopuphidden={applyThemePopupHidden}
                     getThemeList={getThemeList}
+                    currentSelectionType={applyType}
                 />
             ) : (
                 <OnBoadring handleOnboardingFinish={onBoardingDone} />
