@@ -20,7 +20,7 @@
   height: 30px;
   margin: 5px 0;
   outline: none;
-  border: 1px solid #000;
+  border: 1px solid #666666;
 
   &:active, &:visited, &:focus {
     outline: none;
@@ -36,7 +36,7 @@
     background-color: #a10b0b;
     text-align: center;
     line-height: 28px;
-    font-size: 13px;
+    font-size: 11px;
     border-radius: 7px 0 0 7px;
     margin-top: -2px;
     margin-left: -1px;
@@ -45,11 +45,11 @@
 
   .btnType {
     background-color: transparent;
-    color: #000;
+    color: #4F4F4F;
     width: 50%;
     height: 30px;
     line-height: 28px;
-    font-size: 13px;
+    font-size: 11px;
     text-align: center;
     pointer-events: none;
   }

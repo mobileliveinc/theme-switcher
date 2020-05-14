@@ -79,8 +79,6 @@ function selectAllFrames() {
             }
         });
     });
-    console.log('frames are ', frames);
-    console.log('current selection ', figma.currentPage.selection);
 }
 
 function setIsOnboardingDone() {
@@ -255,7 +253,6 @@ function applyTheme(applyTo: string, themeName: any) {
                 }
             } else {
                 if (figma.currentPage.children) {
-                    console.log('resetting nodes ');
                     nodes = figma.currentPage.children;
                 } else {
                     figma.notify('Please make a selection');

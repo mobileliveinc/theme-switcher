@@ -45,7 +45,6 @@ const OnBoadring = ({handleOnboardingFinish}) => {
                 <button
                     className="primary-button"
                     onClick={index === slides.length - 1 ? () => handleOnboardingFinish() : () => setIndex(index + 1)}
-                    // hidden={index !== slides.length - 1}
                 >
                     {index === slides.length - 1 ? 'Create Theme' : 'Next'}
                 </button>

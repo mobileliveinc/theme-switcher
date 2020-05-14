@@ -8,9 +8,16 @@ const Apply = ({themeList, handleSelect, appliedTheme}) => {
     return (
         <div className="themeApplyBtns">
             {themeList.map((th: string) => (
-                <button className="theme-selection-buttons" key={th} value={th} onClick={handleSelect}>
-                    <span className="ColorCode">#A10B0B</span>
-                    <span className="btnType">{th}</span>
+                <button
+                    className="theme-selection-buttons"
+                    key={th}
+                    value={th}
+                    onClick={handleSelect}
+                    style={{color: 'black', display: 'block'}}
+                >
+                    {/* <span className="ColorCode">#A10B0B</span> */}
+                    {/* <span className="btnType">{th}</span> */}
+                    {th}
                 </button>
             ))}
             {/*<br />*/}

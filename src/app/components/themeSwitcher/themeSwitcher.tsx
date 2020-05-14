@@ -2,8 +2,8 @@ import * as React from 'react';
 import Apply from '../Applytheme/ApplyWithButtons';
 import './themeSwitcher.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faRedo, faBell, faSearch, faChevronDown, faCheck} from '@fortawesome/free-solid-svg-icons';
-// faChevronDown
+import {faRedo, faSearch, faChevronDown, faCheck} from '@fortawesome/free-solid-svg-icons';
+
 const ThemeSwicther = ({
     data,
     onCreate,
@@ -48,7 +48,6 @@ const ThemeSwicther = ({
         setSelectedTheme(event.target.value);
     };
     const handleFilterToggle = action => {
-        console.log('Action is ', action);
         if (action === show) {
             setFilterInputClassName('focus');
         } else {
@@ -59,19 +58,19 @@ const ThemeSwicther = ({
         setSelectedTheme('default');
         handleApplyTheme('default');
     };
-    console.log('is popup hidden is ', isPopuphidden);
     if (data && data.length === 0) {
         return (
             <div style={{display: 'flex'}} className="noThemesAvaile">
-                <div style={{textAlign: 'left', paddingTop: '60px', paddingLeft: '46px', paddingRight: '10px'}}>
-                    <FontAwesomeIcon icon={faBell} size="lg" />
+                <div style={{textAlign: 'left', paddingTop: '53px', paddingLeft: '46px', paddingRight: '4px'}}>
+                    {/* <FontAwesomeIcon icon={faBell} size="lg" /> */}
+                    <img src={require(`../../assets/Alert.png`)} max-width="50%" max-height="50%" />
                 </div>
                 <div
                     className="themeSwitcherContent"
                     style={{textAlign: 'left', paddingTop: '58px', paddingRight: '54px'}}
                 >
-                    <h3 style={{display: 'inline', marginLeft: '3px'}}>No themes available</h3>
-                    <p>You dont have any themes create. Sync local styles to get started</p>
+                    <h3 style={{display: 'inline', marginLeft: '3px'}}>No Themes Found</h3>
+                    <p>{`You don’t have any themes created. Sync local styles to get started.`}</p>
                     <div style={{textAlign: 'center'}}>
                         <button className="primary-button" style={{marginTop: '100px'}} onClick={onCreate}>
                             Sync local styles
@@ -83,7 +82,7 @@ const ThemeSwicther = ({
     } else {
         return (
             <React.Fragment>
-                <div style={{padding: '20px', maxHeight: '273px', overflow: 'scroll'}}>
+                <div className="foundThemeContent">
                     <div className="filter_holder">
                         <a className="resync-link" onClick={onCreate}>
                             <FontAwesomeIcon icon={faRedo} size="1x" />
@@ -111,7 +110,7 @@ const ThemeSwicther = ({
                         </div>
                     </div>
 
-                    <h3 style={{marginTop: '34px'}}>Found these themes</h3>
+                    <h3>Found these themes</h3>
                     <Apply
                         appliedTheme={selectedTheme ? selectedTheme : appliedTheme}
                         handleSelect={handleThemeSelect}
@@ -136,7 +135,7 @@ const ThemeSwicther = ({
                                 setSelectionMenuHidden(!selectionMenuHidden);
                             }}
                         >
-                            Apply To Select
+                            {currentSelectionType === 'selection' ? `Apply To Select` : 'Apply to all'}
                             <FontAwesomeIcon className="chevron" icon={faChevronDown} size="1x" />
                         </button>
                         <ul className="drpdown" hidden={selectionMenuHidden}>

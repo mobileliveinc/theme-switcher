@@ -25,7 +25,6 @@ const App = ({}) => {
             const {type, themeData, isOnBoardingDone} = event.data.pluginMessage;
             if (type === 'getTheme') {
                 setIsOnboardingDone(isOnBoardingDone);
-                console.log('invoked setIsOnboardingDone with ', isOnBoardingDone);
                 setDataLoaded(true);
                 const {collectLocalColors, appliedTheme} = themeData;
                 setAppliedTheme(appliedTheme ? appliedTheme : '');
@@ -41,7 +40,6 @@ const App = ({}) => {
     }, []);
 
     const handleApplyTheme = value => {
-        console.log('here with value');
         setApplyThemePopupHidden(false);
         setTimeout(() => {
             setApplyThemePopupHidden(true);
@@ -75,10 +73,6 @@ const App = ({}) => {
         const dataList = data ? [...new Set(data.map(item => item.theme))] : [];
         return dataList;
     };
-    // const selectAll = () => {
-
-    //     parent.postMessage({pluginMessage: {type: applyType}}, '*');
-    // }
     if (dataLoaded === false) return null;
     if (data.length === 0 && isOnboardingDone) {
         resize(380, 400);
@@ -102,7 +96,6 @@ const App = ({}) => {
             ) : (
                 <OnBoadring handleOnboardingFinish={onBoardingDone} />
             )}
-            {/* <button onClick={() => {handleApplyTypeSelect("all")}}>Test apply all</button> */}
             <div className="footer_themeswitcher">
                 <p>Created by mobileLIVE</p>
             </div>
