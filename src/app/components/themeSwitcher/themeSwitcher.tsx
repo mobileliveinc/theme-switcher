@@ -63,7 +63,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
     } else {
         return (
             <React.Fragment>
-                <div style={{padding: '20px', maxHeight: '273px', overflow: 'scroll'}}>
+                <div className="foundThemeContent">
                     <div className="filter_holder">
                         <a className="resync-link" onClick={onCreate}>
                             <FontAwesomeIcon icon={faRedo} size="1x" />
@@ -92,7 +92,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                         </div>
                     </div>
 
-                    <h3 style={{marginTop: '34px'}}>Found these themes</h3>
+                    <h3>Found these themes</h3>
                     <Apply
                         appliedTheme={selectedTheme ? selectedTheme : appliedTheme}
                         handleSelect={handleThemeSelect}

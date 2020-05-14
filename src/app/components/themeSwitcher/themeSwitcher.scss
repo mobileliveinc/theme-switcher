@@ -4,6 +4,17 @@
 *{
   box-sizing: border-box;
 }
+.foundThemeContent{
+  padding:20px;
+  max-height: 266px;
+  overflow: scroll;
+  h3{
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 30px;
+    color:#4F4F4F;
+  }
+}
 
 .filter_holder{
   display: flex;
@@ -51,10 +62,11 @@
   .resync-link{
     margin-bottom: 0;
     align-items: center;
-    font-size: 14px;
+    font-size: 11px;
+    line-height: 14px;
     svg{
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
     }
   }
 }
@@ -72,8 +84,8 @@
   border: none;
   background-color: #f48245;
   height: 30px;
-  font-size: 13px;
-  line-height: 1;
+  font-size: 11px;
+  line-height: 14px;
   width: 100px;
   color: #fff;
   outline: none;
@@ -135,7 +147,7 @@
     left: 12px;
     margin: 0;
     list-style-type: none;
-    padding:15px 18px;
+    padding:17px 18px;
     background-color: #333333;
     border-radius: 5px;
     color: white;
@@ -153,7 +165,7 @@
         display: none;
       }
       &:first-child{
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
       &.active{
         .check{
@@ -173,7 +185,7 @@
   .msg-wrap{
     width:256px;
     height:30px;
-    margin:0 auto 15px;
+    margin:0 auto 18px;
     text-align: center;
     background-color: #333333;
     color: white;
