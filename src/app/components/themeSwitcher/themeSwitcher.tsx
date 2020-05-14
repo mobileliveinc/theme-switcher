@@ -2,7 +2,7 @@ import * as React from 'react';
 import Apply from '../Applytheme/ApplyWithButtons';
 import './themeSwitcher.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faRedo, faBell, faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faRedo, faBell, faSearch, faChevronDown, faCheck} from '@fortawesome/free-solid-svg-icons';
 // faChevronDown
 const ThemeSwicther = ({
     data,
@@ -72,7 +72,7 @@ const ThemeSwicther = ({
     } else {
         return (
             <React.Fragment>
-                <div style={{padding: '20px'}}>
+                <div style={{padding: '20px', maxHeight: '273px', overflow: 'scroll'}}>
                     <div className="filter_holder">
                         <a className="resync-link" onClick={onCreate}>
                             <FontAwesomeIcon icon={faRedo} size="1x" />
@@ -130,13 +130,15 @@ const ThemeSwicther = ({
                             }}
                         >
                             Apply To Select
+                            <FontAwesomeIcon className="chevron" icon={faChevronDown} size="1x" />
                         </button>
-                        <ul hidden={selectionMenuHidden}>
+                        <ul className="drpdown" hidden={selectionMenuHidden}>
                             <li
                                 onClick={() => {
                                     handleApplyTypeSelect('selection');
                                 }}
                             >
+                                <FontAwesomeIcon className="check" icon={faCheck} size="1x" />
                                 Apply to selection
                             </li>
                             <li
@@ -144,6 +146,7 @@ const ThemeSwicther = ({
                                     handleApplyTypeSelect('all');
                                 }}
                             >
+                                <FontAwesomeIcon className="check" icon={faCheck} size="1x" />
                                 Apply to all
                             </li>
                         </ul>
