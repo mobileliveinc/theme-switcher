@@ -1,4 +1,4 @@
-@import '../../styles/ui.scss';
+@import '../../styles/variables.scss';
 
 .themeApplyBtns {
   display: flex;
@@ -10,7 +10,7 @@
 .theme-selection-buttons {
   border-radius: 7px;
   background: transparent;
-  color: white;
+  color: $white;
   padding: 0;
   display: inline-flex;
   align-items: center;
@@ -20,7 +20,7 @@
   height: 30px;
   margin: 5px 0;
   outline: none;
-  border: 1px solid #666666;
+  border: 1px solid $gray1;
 
   &:active, &:visited, &:focus {
     outline: none;
@@ -32,8 +32,8 @@
   .ColorCode {
     height: 30px;
     width: 50%;
-    color: #fff;
-    background-color: #a10b0b;
+    color: $white;
+    background-color: $red;
     text-align: center;
     line-height: 28px;
     font-size: 11px;
@@ -45,7 +45,7 @@
 
   .btnType {
     background-color: transparent;
-    color: #4F4F4F;
+    color: $gray;
     width: 50%;
     height: 30px;
     line-height: 28px;
@@ -54,14 +54,4 @@
     pointer-events: none;
   }
 }
-.themeApplySelect{
-  border-top: 1px solid rgb(240, 240, 240);
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
-  padding: 30px 28px;
-  box-sizing: border-box;
-}
+

@@ -1,78 +1,22 @@
+@import './variables.scss';
+
+*{
+    box-sizing: border-box;
+}
+
 body {
     font: 12px sans-serif;
     text-align: left;
     margin: 0;
-    /* margin: 20px; */
-}
-/* button {
-    border-radius: 5px;
-    background: white;
-    color: black;
-    border: none;
-    padding: 8px 15px;
-    margin: 0 5px;
-    box-shadow: inset 0 0 0 1px black;
-    outline: none;
-} */
-#button-apply {
-    border-radius: 5px;
-    color: #fff;
-    border: none;
-    padding: 8px 15px;
-    margin: 0 5px;
-    outline: none;
-    background-color: #18a0fb;
-}
-#create {
-    box-shadow: none;
-    background: #18a0fb;
-    color: white;
-}
-input {
-    border: none;
-    outline: none;
-    padding: 8px;
-}
-input:hover {
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-}
-button:focus {
-    box-shadow: inset 0 0 0 2px #18a0fb;
-}
-#create:focus {
-    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3);
-}
-input:focus {
-    box-shadow: inset 0 0 0 2px #18a0fb;
 }
 
-.wrapper {
-    display: inline-flex;
-    .apply-btn {
-        border-radius: 5px;
-        background: #f48245;
-        color: white;
-        border: none;
-        padding: 8px 15px;
-        width: 100px;
-        height: 30px;
-        margin-top: 15px;
-        margin-right: 32px;
-        margin-bottom: 10px;
-        float: right;
-    }
-}
 
 #react-page {
     width: 380px;
     position: relative;
     height: 100%;
 }
-.selec-theme {
-    margin: 20px;
-    width: 150px;
-    height: 30px;
-}
+
 .slider-button {
     z-index: 99;
     border-radius: 50%;
@@ -89,37 +33,21 @@ input:focus {
 }
 .primary-button {
     border-radius: 5px;
-    background: #f48245;
-    color: white;
+    background: $primary;
+    color: $white;
     border: none;
     padding: 8px 15px;
     width: 160px;
     height: 30px;
     margin: 0 5px;
     outline: none;
-}
+  }
 
-.resync-link {
-    color: #f48245;
-    display: flex;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-.theme-selection-button {
-    border-radius: 5px;
-    background: #f48245;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    width: 148px;
-    height: 30px;
-    margin: 5px 5px;
-    outline: none;
-}
+
 
 .footer_themeswitcher{
     text-align: center;
-    background-color: rgb(244, 130, 69);
+    background-color: $primary;
     margin-left: 0;
     position: absolute;
     left: 0;
@@ -129,7 +57,7 @@ input:focus {
     p{
         padding: 4px;
         margin: 0;
-        color: #ffffffde;
+        color: $white;
         font-size: 10px;
         line-height: 11px;
     }

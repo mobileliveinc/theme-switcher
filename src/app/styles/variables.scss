@@ -1,0 +1,66 @@
+$primary:#F48245;
+$black:#000;
+$white:#fff;
+$lightGray:#F1F1F1;
+$lightGray1:#B8B8B8;
+$lightGray2:#A7A7A7;
+$gray:#4F4F4F;
+$gray1:#666666;
+$darkGray:#333333;
+$red:#a10b0b;
+$blue:#18a0fb;
+
+#button-apply {
+    border-radius: 5px;
+    color: $white;
+    border: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    outline: none;
+    background-color: $blue;
+}
+
+.selec-theme {
+    margin: 20px;
+    width: 150px;
+    height: 30px;
+}
+#create {
+    box-shadow: none;
+    background: $blue;
+    color: $white;
+}
+input {
+    border: none;
+    outline: none;
+    padding: 8px;
+}
+input:hover {
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+button:focus {
+    box-shadow: inset 0 0 0 2px $blue;
+}
+#create:focus {
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3);
+}
+input:focus {
+    box-shadow: inset 0 0 0 2px $gray;
+}
+
+.wrapper {
+    display: inline-flex;
+    .apply-btn {
+        border-radius: 5px;
+        background: $primary;
+        color: $white;
+        border: none;
+        padding: 8px 15px;
+        width: 100px;
+        height: 30px;
+        margin-top: 15px;
+        margin-right: 32px;
+        margin-bottom: 10px;
+        float: right;
+    }
+}

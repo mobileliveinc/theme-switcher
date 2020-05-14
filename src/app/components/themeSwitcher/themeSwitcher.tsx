@@ -52,7 +52,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                 >
                     <h3 style={{display: 'inline', marginLeft: '3px'}}>No themes available</h3>
                     <p>You dont have any themes create. Sync local styles to get started</p>
-                    <div style={{textAlign: 'center'}}>
+                    <div style={{textAlign: 'center', marginLeft: '-16px'}}>
                         <button className="primary-button" style={{marginTop: '100px'}} onClick={onCreate}>
                             Sync local styles
                         </button>
