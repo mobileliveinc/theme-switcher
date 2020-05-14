@@ -2,13 +2,14 @@ import * as React from 'react';
 import Apply from '../Applytheme/ApplyWithButtons';
 import './themeSwitcher.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faRedo, faBell, faChevronDown, faSearch} from '@fortawesome/free-solid-svg-icons';
-
+import {faRedo, faBell, faSearch} from '@fortawesome/free-solid-svg-icons';
+// faChevronDown
 const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getThemeList, handleApplyTypeSelect}) => {
     const [filteredThemeList, setFilteredThemeList] = React.useState([]);
     const [selectedTheme, setSelectedTheme] = React.useState('');
     const [filterInputClassName, setFilterInputClassName] = React.useState('');
     const [themeReselected, setThemeReselected] = React.useState(false);
+    const [selectionMenuHidden, setSelectionMenuHidden] = React.useState(true);
     const show = 'SHOW';
     const hide = 'hide';
 
@@ -100,11 +101,34 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                 </div>
                 <div className="themeApplySelect">
                     <div className="selectHolder">
-                        <FontAwesomeIcon className="chevron" icon={faChevronDown} size="1x" />
+                        {/* <FontAwesomeIcon className="chevron" icon={faChevronDown} size="1x" />
                         <select onChange={handleApplyTypeSelect}>
                             <option value="selection">Apply to selection</option>
                             <option value="all">Apply to all</option>
-                        </select>
+                        </select> */}
+                        <button
+                            onClick={() => {
+                                setSelectionMenuHidden(!selectionMenuHidden);
+                            }}
+                        >
+                            Apply To Select
+                        </button>
+                        <ul hidden={selectionMenuHidden}>
+                            <li
+                                onClick={() => {
+                                    handleApplyTypeSelect('selection');
+                                }}
+                            >
+                                Apply to selection
+                            </li>
+                            <li
+                                onClick={() => {
+                                    handleApplyTypeSelect('all');
+                                }}
+                            >
+                                Apply to all
+                            </li>
+                        </ul>
                     </div>
                     <div>
                         <button

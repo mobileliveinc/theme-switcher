@@ -52,8 +52,9 @@ const App = ({}) => {
     const resize = (width, height) => {
         parent.postMessage({pluginMessage: {type: 'resize-plugin-modal', width: width, height: height}}, '*');
     };
-    const handleApplyTypeSelect = event => {
-        setApplyType(event.target.value);
+    const handleApplyTypeSelect = type => {
+        console.log('type is ', type);
+        setApplyType(type);
     };
 
     React.useEffect(() => {
