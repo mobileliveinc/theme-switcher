@@ -4,10 +4,11 @@ import './themeSwitcher.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faRedo, faBell, faChevronDown, faSearch} from '@fortawesome/free-solid-svg-icons';
 
-const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getThemeList}) => {
+const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getThemeList, handleApplyTypeSelect}) => {
     const [filteredThemeList, setFilteredThemeList] = React.useState([]);
     const [selectedTheme, setSelectedTheme] = React.useState('');
     const [filterInputClassName, setFilterInputClassName] = React.useState('');
+    const [themeReselected, setThemeReselected] = React.useState(false);
     const show = 'SHOW';
     const hide = 'hide';
 
@@ -27,6 +28,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
         }
     };
     const handleThemeSelect = event => {
+        setThemeReselected(true);
         setSelectedTheme(event.target.value);
     };
     const handleFilterToggle = (event, action) => {
@@ -99,13 +101,17 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                 <div className="themeApplySelect">
                     <div className="selectHolder">
                         <FontAwesomeIcon className="chevron" icon={faChevronDown} size="1x" />
-                        <select>
-                            <option value="applyToSelection">Apply to selection</option>
-                            <option value="applyToPage">Apply To Page</option>
+                        <select onChange={handleApplyTypeSelect}>
+                            <option value="selection">Apply to selection</option>
+                            <option value="all">Apply to all</option>
                         </select>
                     </div>
                     <div>
-                        <button onClick={() => handleApplyTheme(selectedTheme)} className="apply-btn">
+                        <button
+                            onClick={() => handleApplyTheme(selectedTheme)}
+                            className="apply-btn"
+                            disabled={!themeReselected}
+                        >
                             Apply
                         </button>
                     </div>

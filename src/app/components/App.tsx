@@ -10,7 +10,7 @@ const App = ({}) => {
     const [data, setData] = React.useState([]);
     const [isOnboardingDone, setIsOnboardingDone] = React.useState(false);
     const [dataLoaded, setDataLoaded] = React.useState(false);
-    // const [applyType, setApplyType] = React.useState('selection');
+    const [applyType, setApplyType] = React.useState('selection');
 
     React.useEffect(() => {
         (async function() {
@@ -40,7 +40,8 @@ const App = ({}) => {
     }, []);
 
     const handleApplyTheme = value => {
-        parent.postMessage({pluginMessage: {type: 'apply-theme', themeName: value, selectType: 'applyType'}}, '*');
+        console.log('btn disabled');
+        parent.postMessage({pluginMessage: {type: 'apply-theme', themeName: value, selectType: applyType}}, '*');
     };
 
     const onBoardingDone = () => {
@@ -51,9 +52,9 @@ const App = ({}) => {
     const resize = (width, height) => {
         parent.postMessage({pluginMessage: {type: 'resize-plugin-modal', width: width, height: height}}, '*');
     };
-    // const handleApplyTypeSelect = (type) => {
-    //     setApplyType(type);
-    // }
+    const handleApplyTypeSelect = event => {
+        setApplyType(event.target.value);
+    };
 
     React.useEffect(() => {
         // This is how we read messages sent from the plugin controller
@@ -71,7 +72,7 @@ const App = ({}) => {
     };
     // const selectAll = () => {
 
-    //     parent.postMessage({pluginMessage: {type: 'select-all'}}, '*');
+    //     parent.postMessage({pluginMessage: {type: applyType}}, '*');
     // }
     if (dataLoaded === false) return null;
     if (data.length === 0 && isOnboardingDone) {
@@ -88,6 +89,7 @@ const App = ({}) => {
                     onCreate={onCreate}
                     appliedTheme={appliedTheme}
                     handleApplyTheme={handleApplyTheme}
+                    handleApplyTypeSelect={handleApplyTypeSelect}
                     getThemeList={getThemeList}
                 />
             ) : (
@@ -95,7 +97,7 @@ const App = ({}) => {
             )}
             {/* <button onClick={() => {handleApplyTypeSelect("all")}}>Test apply all</button> */}
             <div className="footer_themeswitcher">
-                <p>Created by MobileLIVE</p>
+                <p>Created by mobileLIVE</p>
             </div>
         </React.Fragment>
     );
