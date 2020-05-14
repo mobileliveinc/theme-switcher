@@ -35,7 +35,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
     const handleFilterToggle = (event, action) => {
         console.log('Action is ', action);
         if (action === show) {
-            setFilterInputClassName('className');
+            setFilterInputClassName('focus');
         } else if (action === hide && event.target.value === '') {
             setFilterInputClassName('');
         }
@@ -67,7 +67,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                     <div className="filter_holder">
                         <a className="resync-link" onClick={onCreate}>
                             <FontAwesomeIcon icon={faRedo} size="1x" />
-                            <span style={{marginLeft: '3px'}}>Resync Local Styles</span>
+                            <span style={{marginLeft: '6px'}}>Resync Local Styles</span>
                         </a>
                         <div className={`searchField ${filterInputClassName}`}>
                             <label htmlFor="searchme"></label>
@@ -79,7 +79,7 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                                     handleFilterToggle(event, hide);
                                 }}
                             ></input>
-                            <a className="">
+                            <a className="search-btn">
                                 <FontAwesomeIcon
                                     className="chevronSearch"
                                     icon={faSearch}
@@ -98,6 +98,13 @@ const ThemeSwicther = ({data, onCreate, appliedTheme, handleApplyTheme, getTheme
                         handleSelect={handleThemeSelect}
                         themeList={filteredThemeList.length === 0 ? getThemeList() : filteredThemeList}
                     />
+                </div>
+                <div className="themeSelectMessage">
+                    <div className="msg-wrap">
+                        <img src={require(`../../assets/clap.png`)} alt="clap_icon" />
+                        <span>Successfully apllied Rogers theme</span>
+                    </div>
+                    <a className="reset-link">Reset Style</a>
                 </div>
                 <div className="themeApplySelect">
                     <div className="selectHolder">

@@ -1,19 +1,61 @@
 @import '../../styles/ui.scss';
 //@import '../../assets/css/ico-fonts.css';
 
-
+*{
+  box-sizing: border-box;
+}
 
 .filter_holder{
   display: flex;
   justify-content: space-between;
   align-items: center;
   .searchField{
+    display: flex;
     input{
-      border: none;
+      display: inline-block;
+      width: 0px;
+      height: 25px;
+      transition:all .5s ease;
+      border-radius: 5px 0 0 5px;
+      padding:0;
+    }
+    .search-btn{
+      width:25px;
+      height:25px;
+      display: inline-block;
+      position: relative;
+      transition: all .5s ease;
+      border-radius: 0 5px 5px 0;
+      svg{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        transition: color .5s ease;
+      }
+    }
+    &.focus{
+      input{
+        border: 1px solid #666666;
+        width:90px;
+        padding:5px;
+      }
+      .search-btn{
+        background-color: #666666;
+        svg{
+          color:white;
+        }
+      }
     }
   }
   .resync-link{
     margin-bottom: 0;
+    align-items: center;
+    font-size: 14px;
+    svg{
+      width: 10px;
+      height: 10px;
+    }
   }
 }
 .noThemesAvaile {
@@ -47,8 +89,8 @@
   }
 }
 .themeApplySelect{
-  align-items: flex-start;
-  padding: 24px 28px;
+  padding: 19px 28px 38px;
+  height: 88px;
 }
 
 .selectHolder {
@@ -84,3 +126,68 @@
     right: 0;
   }
 }
+.themeSelectMessage{
+  position: absolute;
+  bottom: 0;
+  width:100%;
+  padding:0 15px 88px;
+  z-index: 99;
+  text-align: right;
+  .msg-wrap{
+    width:256px;
+    height:30px;
+    margin:0 auto 15px;
+    text-align: center;
+    background-color: #333333;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // visibility: hidden;
+    // opacity: 1;
+    
+    span{
+      font-size: 11px;
+      line-height: 1;
+    }
+    img{
+      height:11px;
+      width:11px;
+      margin-right: 5px;
+    }
+  }
+  .reset-link{
+    color: #f48245;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 300;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
+  // &.animate{
+  //   .msg-wrap{
+  //     animation-name: opac;
+  //     animation-duration: 4s;
+  //   }
+  // }
+}
+
+
+// @keyframes opac{
+//   0%   {
+//     visibility: hidden;
+//     opacity: 0;
+//   }
+//   25%  {
+//     visibility: visible;
+//     opacity: 1;
+//   }
+//   75%  {
+//     visibility: visible;
+//     opacity: 1;
+//   }
+//   100% {
+//     visibility: hidden;
+//     opacity: 0;}
+// }
