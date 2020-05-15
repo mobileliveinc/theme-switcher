@@ -1,4 +1,4 @@
-@import '../../styles/ui.scss';
+@import '../../styles/variables.scss';
 
 
 .react-reveal {
@@ -17,7 +17,7 @@
   }
 
   .skip-inro-link {
-    color: #f48245;
+    color: $primary;
     display: inline-block;
     position: absolute;
     bottom: 15px;
@@ -28,7 +28,7 @@
   }
 
   p {
-    color: #101010;
+    color: $black;
     line-height: 1.5;
     font-size: 14px;
     font-weight: 300;
@@ -42,7 +42,7 @@
   box-sizing: border-box;
   min-height: 215px;
   .text-light{
-    color:#B8B8B8;
+    color:$lightGray1;
   }
 }
 .btn_slides{
