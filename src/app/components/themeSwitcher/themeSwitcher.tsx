@@ -141,7 +141,7 @@ const ThemeSwicther = ({
                                 setSelectionMenuHidden(!selectionMenuHidden);
                             }}
                         >
-                            {currentSelectionType === 'selection' ? `Apply To Select` : 'Apply to all'}
+                            {currentSelectionType === 'selection' ? `Apply To Select` : 'Apply to page'}
                             <FontAwesomeIcon className="chevron" icon={faChevronDown} size="1x" />
                         </button>
                         <ul className="drpdown" hidden={selectionMenuHidden}>
@@ -161,7 +161,7 @@ const ThemeSwicther = ({
                                 }}
                             >
                                 <FontAwesomeIcon className="check" icon={faCheck} size="1x" />
-                                Apply to all
+                                Apply to page
                             </li>
                         </ul>
                     </div>
