@@ -1,0 +1,62 @@
+@import '../../styles/variables.scss';
+
+
+.react-reveal {
+  position: relative;
+  letter-spacing: .5px;
+
+  img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  h3{
+    margin-top: 0;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .skip-inro-link {
+    color: $primary;
+    display: inline-block;
+    position: absolute;
+    bottom: 15px;
+    font-size: 14px;
+    font-weight: 300;
+    left: 32px;
+    cursor: pointer;
+  }
+
+  p {
+    color: $black;
+    line-height: 1.5;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  b{
+    font-size: 14px;
+  }
+
+}
+.text-holder{
+  box-sizing: border-box;
+  min-height: 215px;
+  .text-light{
+    color:$lightGray1;
+  }
+}
+.btn_slides{
+  //margin-bottom: 40px;
+  .primary-button{
+    margin-top: 0;
+    margin-bottom: 60px;
+  }
+  .slideDots{
+    margin-top: 0;
+    .slider-button{
+      border:0;
+      margin-top: 0;
+    }
+  }
+}
