@@ -3,8 +3,11 @@ import './Applytheme.scss';
 
 // declare function require(path: string): any;
 
-const Apply = ({themeList, handleSelect, appliedTheme}) => {
-    console.log(appliedTheme);
+const inactiveStyles = {color: 'black', display: 'block'};
+const activeStyles = {color: 'white', backgroundColor: '#4F4F4F', display: 'block'};
+
+const Apply = ({themeList, handleSelect, appliedTheme, currentTheme}) => {
+    console.log('applied theme is ', appliedTheme);
     return (
         <div className="themeApplyBtns">
             {themeList.map((th: string) => (
@@ -13,7 +16,7 @@ const Apply = ({themeList, handleSelect, appliedTheme}) => {
                     key={th}
                     value={th}
                     onClick={handleSelect}
-                    style={{color: 'black', display: 'block'}}
+                    style={th === currentTheme ? activeStyles : inactiveStyles}
                 >
                     {/* <span className="ColorCode">#A10B0B</span> */}
                     {/* <span className="btnType">{th}</span> */}
@@ -29,3 +32,4 @@ const Apply = ({themeList, handleSelect, appliedTheme}) => {
 };
 
 export default Apply;
+// #4F4F4F
