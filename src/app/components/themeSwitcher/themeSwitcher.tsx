@@ -2,8 +2,7 @@ import * as React from 'react';
 import Apply from '../Applytheme/ApplyWithButtons';
 import './themeSwitcher.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faRedo, faSearch, faChevronDown, faCheck} from '@fortawesome/free-solid-svg-icons';
-
+import {faChevronDown, faCheck} from '@fortawesome/free-solid-svg-icons';
 const ThemeSwicther = ({
     data,
     onCreate,
@@ -71,7 +70,7 @@ const ThemeSwicther = ({
                 >
                     <h3 style={{display: 'inline', marginLeft: '3px'}}>No Themes Found</h3>
                     <p>{`You don’t have any themes created. Sync local styles to get started.`}</p>
-                    <div style={{textAlign: 'center'}}>
+                    <div style={{textAlign: 'center', marginLeft: '-28px'}}>
                         <button className="primary-button" style={{marginTop: '100px'}} onClick={onCreate}>
                             Sync local styles
                         </button>
@@ -85,7 +84,7 @@ const ThemeSwicther = ({
                 <div className="foundThemeContent">
                     <div className="filter_holder">
                         <a className="resync-link" onClick={onCreate}>
-                            <FontAwesomeIcon icon={faRedo} size="1x" />
+                            <img src={require(`../../assets/refresh.svg`)} alt="refresh_icon" />
                             <span style={{marginLeft: '6px'}}>Resync Local Styles</span>
                         </a>
                         <div className={`searchField ${filterInputClassName}`}>
@@ -98,14 +97,21 @@ const ThemeSwicther = ({
                                 }}
                             ></input>
                             <a className="search-btn">
-                                <FontAwesomeIcon
-                                    className="chevronSearch"
-                                    icon={faSearch}
-                                    size="1x"
+                                <svg
+                                    width="13"
+                                    height="13"
+                                    viewBox="0 0 13 13"
+                                    xmlns="http://www.w3.org/2000/svg"
                                     onClick={() => {
                                         handleFilterToggle(filterInputClassName === '' ? show : hide);
                                     }}
-                                />
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M8.54703 8.76739C7.71902 9.43145 6.66778 9.82861 5.52368 9.82861C2.85277 9.82861 0.6875 7.66345 0.6875 4.99243C0.6875 2.32152 2.85277 0.15625 5.52368 0.15625C8.1947 0.15625 10.3599 2.32152 10.3599 4.99243C10.3599 6.13664 9.9626 7.18798 9.29843 8.01609L12.7506 11.4684L11.9993 12.2197L8.54703 8.76739ZM9.29736 4.99243C9.29736 7.07663 7.60788 8.76611 5.52368 8.76611C3.43959 8.76611 1.75 7.07663 1.75 4.99243C1.75 2.90834 3.43959 1.21875 5.52368 1.21875C7.60788 1.21875 9.29736 2.90834 9.29736 4.99243Z"
+                                    />
+                                </svg>
                             </a>
                         </div>
                     </div>
