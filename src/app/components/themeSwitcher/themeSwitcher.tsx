@@ -53,6 +53,11 @@ const ThemeSwicther = ({
             setFilterInputClassName('');
         }
     };
+    const collapseFilterOnBlur = event => {
+        if (event.target.value === '') {
+            setFilterInputClassName('');
+        }
+    };
     const handleResetStyle = () => {
         setSelectedTheme('default');
         handleApplyTheme('default');
@@ -93,8 +98,8 @@ const ThemeSwicther = ({
                             <input
                                 id="searchme"
                                 onChange={handleFilterChange}
-                                onBlur={() => {
-                                    handleFilterToggle(hide);
+                                onBlur={event => {
+                                    collapseFilterOnBlur(event);
                                 }}
                             ></input>
                             <a className="search-btn">
