@@ -62,7 +62,8 @@ const ThemeSwicther = ({
             <div style={{display: 'flex'}} className="noThemesAvaile">
                 <div style={{textAlign: 'left', paddingTop: '53px', paddingLeft: '46px', paddingRight: '4px'}}>
                     {/* <FontAwesomeIcon icon={faBell} size="lg" /> */}
-                    <img src={require(`../../assets/Alert.png`)} max-width="50%" max-height="50%" />
+                    {/* <img src={require(`../../assets/Alert.png`)} max-width="50%" max-height="50%" /> */}
+                    <img src={require(`../../assets/Alert.svg`)} alt="refresh_icon" />
                 </div>
                 <div
                     className="themeSwitcherContent"
@@ -119,6 +120,7 @@ const ThemeSwicther = ({
                     <h3>Found these themes</h3>
                     <Apply
                         appliedTheme={selectedTheme ? selectedTheme : appliedTheme}
+                        currentTheme={appliedTheme}
                         handleSelect={handleThemeSelect}
                         themeList={filteredThemeList.length === 0 ? getThemeList() : filteredThemeList}
                     />
@@ -141,7 +143,7 @@ const ThemeSwicther = ({
                                 setSelectionMenuHidden(!selectionMenuHidden);
                             }}
                         >
-                            {currentSelectionType === 'selection' ? `Apply To Select` : 'Apply to page'}
+                            {currentSelectionType === 'selection' ? `Apply To Select` : 'Apply to Page'}
                             <FontAwesomeIcon className="chevron" icon={faChevronDown} size="1x" />
                         </button>
                         <ul className="drpdown" hidden={selectionMenuHidden}>
@@ -152,7 +154,7 @@ const ThemeSwicther = ({
                                 }}
                             >
                                 <FontAwesomeIcon className="check" icon={faCheck} size="1x" />
-                                Apply to selection
+                                Apply to Selection
                             </li>
                             <li
                                 className={currentSelectionType === 'all' ? 'active' : ''}
@@ -161,7 +163,7 @@ const ThemeSwicther = ({
                                 }}
                             >
                                 <FontAwesomeIcon className="check" icon={faCheck} size="1x" />
-                                Apply to page
+                                Apply to Page
                             </li>
                         </ul>
                     </div>

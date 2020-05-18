@@ -41,6 +41,7 @@ const App = ({}) => {
 
     const handleApplyTheme = value => {
         setApplyThemePopupHidden(false);
+        setAppliedTheme(value);
         setTimeout(() => {
             setApplyThemePopupHidden(true);
         }, 2000);
