@@ -134,7 +134,7 @@ const ThemeSwicther = ({
                     {!isPopuphidden && (
                         <div className="msg-wrap">
                             <img src={require(`../../assets/clap.png`)} alt="clap_icon" />
-                            <span>{`Successfully apllied ${selectedTheme} theme`}</span>
+                            <span>{`Successfully applied ${selectedTheme} theme`}</span>
                         </div>
                     )}
                     <a className="reset-link" onClick={handleResetStyle}>
