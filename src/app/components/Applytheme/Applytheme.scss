@@ -22,8 +22,13 @@
   outline: none;
   border: 1px solid $gray1;
 
-  &:active, &:visited, &:focus {
-    outline: none;
+  //&:active, &:visited, &:focus {
+  //  outline: none;
+  //}
+  &:hover, &:active, &:focus {
+    background: $lightGray3;
+    color: $primary !important;
+    border-color: $primary;
   }
   &:nth-child(even){
     margin-left: auto !important;

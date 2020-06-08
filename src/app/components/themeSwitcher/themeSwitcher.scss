@@ -200,7 +200,7 @@
   text-align: right;
   .msg-wrap{
     width:270px;
-    height:30px;
+    padding: 5px 10px;
     margin:0 auto 18px;
     text-align: center;
     background-color: $darkGray;
@@ -212,12 +212,11 @@
     
     span{
       font-size: 11px;
-      line-height: 1;
+      line-height: 1.2;
     }
     img{
-      height:11px;
-      width:11px;
-      margin-right: 5px;
+      width: 20px;
+      margin: 0 10px 0 0;
     }
   }
   .reset-link{
