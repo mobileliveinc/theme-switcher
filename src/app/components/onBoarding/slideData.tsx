@@ -1,6 +1,6 @@
 export const slides = [
     {
-        image: 'ThemeSwitcherMD.png',
+        image: 'group24.png',
         title: 'Welcome To Theme Switcher',
         description: `Theme Switcher let's you quickly create color themes from your published Figma styles. 
 
