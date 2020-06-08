@@ -102,6 +102,12 @@
   &.disabled{
     background-color: $lightGray2;
   }
+  &:hover.disabled {
+    background-color: $lightGray2;
+}
+  &:hover {
+    background-color:#333333;
+}
 }
 
 .themeApplySelect{
@@ -193,7 +199,7 @@
   z-index: 1;
   text-align: right;
   .msg-wrap{
-    width:256px;
+    width:270px;
     height:30px;
     margin:0 auto 18px;
     text-align: center;

@@ -18,6 +18,8 @@ const ThemeSwicther = ({
     const [filterInputClassName, setFilterInputClassName] = React.useState('');
     const [themeReselected, setThemeReselected] = React.useState(false);
     const [selectionMenuHidden, setSelectionMenuHidden] = React.useState(true);
+    const [popupMessage, setPopupMessage] = React.useState('');
+
     const show = 'SHOW';
     const hide = 'hide';
 
@@ -31,6 +33,10 @@ const ThemeSwicther = ({
         });
     }, []);
 
+    const handleApplyThemeClick = () => {
+        handleApplyTheme(selectedTheme);
+        setPopupMessage(`Successfully apllied ${selectedTheme} theme`);
+    };
     const handleFilterChange = async event => {
         let value = event.target.value;
         let results = [];
@@ -61,6 +67,7 @@ const ThemeSwicther = ({
     const handleResetStyle = () => {
         setSelectedTheme('default');
         handleApplyTheme('default');
+        setPopupMessage(`Successfully reset current theme and applied the default theme`);
     };
     if (data && data.length === 0) {
         return (
@@ -134,7 +141,7 @@ const ThemeSwicther = ({
                     {!isPopuphidden && (
                         <div className="msg-wrap">
                             <img src={require(`../../assets/clap.png`)} alt="clap_icon" />
-                            <span>{`Successfully apllied ${selectedTheme} theme`}</span>
+                            <span>{popupMessage}</span>
                         </div>
                     )}
                     <a className="reset-link" onClick={handleResetStyle}>
@@ -174,7 +181,7 @@ const ThemeSwicther = ({
                     </div>
                     <div>
                         <button
-                            onClick={() => handleApplyTheme(selectedTheme)}
+                            onClick={() => handleApplyThemeClick()}
                             className={`apply-btn ${!themeReselected ? 'disabled' : ''}`}
                             disabled={!themeReselected}
                         >
