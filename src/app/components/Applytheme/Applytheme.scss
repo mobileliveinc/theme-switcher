@@ -27,8 +27,8 @@
   //}
   &:hover, &:active, &:focus {
     background: $lightGray3;
-    color: $primary !important;
-    border-color: $primary;
+    color: rgb(79, 79, 79);
+    border-color: rgb(79, 79, 79);
   }
   &:nth-child(even){
     margin-left: auto !important;
