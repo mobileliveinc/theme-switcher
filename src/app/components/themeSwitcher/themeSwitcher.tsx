@@ -12,6 +12,7 @@ const ThemeSwicther = ({
     handleApplyTypeSelect,
     isPopuphidden,
     currentSelectionType,
+    toggleModal,
 }) => {
     const [filteredThemeList, setFilteredThemeList] = React.useState([]);
     const [selectedTheme, setSelectedTheme] = React.useState('');
@@ -144,10 +145,14 @@ const ThemeSwicther = ({
                             <span>{popupMessage}</span>
                         </div>
                     )}
+                    <a onClick={toggleModal} style={{cursor: 'pointer'}}>
+                        <img height="16px" src={require(`../../assets/information.svg`)} alt="information_icon" />
+                    </a>
                     <a className="reset-link" onClick={handleResetStyle}>
                         Reset Style
                     </a>
                 </div>
+
                 <div className="themeApplySelect">
                     <div className="selectHolder">
                         <button
@@ -179,6 +184,7 @@ const ThemeSwicther = ({
                             </li>
                         </ul>
                     </div>
+
                     <div>
                         <button
                             onClick={() => handleApplyThemeClick()}
