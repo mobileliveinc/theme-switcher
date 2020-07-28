@@ -2,16 +2,33 @@ import * as React from 'react';
 import '../styles/ui.scss';
 import ThemeSwicther from './themeSwitcher/themeSwitcher';
 import OnBoadring from './onBoarding/onBoarding';
+import Modal from 'react-modal';
 
 // declare function require(path: string): any;
 
+Modal.setAppElement('#react-page');
+
+const customStyles = {
+    content: {
+        top: '35%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-40%',
+        padding: '10px 15px',
+        transform: 'translate(-50%, -50%)',
+    },
+};
+
 const App = ({}) => {
+    var subtitle;
     const [appliedTheme, setAppliedTheme] = React.useState('');
     const [data, setData] = React.useState([]);
     const [isOnboardingDone, setIsOnboardingDone] = React.useState(false);
     const [dataLoaded, setDataLoaded] = React.useState(false);
     const [applyType, setApplyType] = React.useState('selection');
     const [applyThemePopupHidden, setApplyThemePopupHidden] = React.useState(true);
+    const [modalIsOpen, setIsOpen] = React.useState(false);
 
     React.useEffect(() => {
         (async function() {
@@ -19,7 +36,6 @@ const App = ({}) => {
             getCreatedTheme();
         })();
     }, []);
-
     const getCreatedTheme = () => {
         window.onmessage = event => {
             const {type, themeData, isOnBoardingDone} = event.data.pluginMessage;
@@ -27,6 +43,7 @@ const App = ({}) => {
                 setIsOnboardingDone(isOnBoardingDone);
                 setDataLoaded(true);
                 const {collectLocalColors, appliedTheme} = themeData;
+                console.log('theme data is ', themeData);
                 setAppliedTheme(appliedTheme ? appliedTheme : '');
                 setData(collectLocalColors && collectLocalColors.length > 0 ? collectLocalColors : []);
             }
@@ -74,6 +91,21 @@ const App = ({}) => {
         const dataList = data ? [...new Set(data.map(item => item.theme))] : [];
         return dataList;
     };
+    // function openModal() {
+    //     setIsOpen(true);
+    //   }
+
+    function afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        subtitle.style.color = '#f00';
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+    const toggleModal = () => {
+        setIsOpen(!modalIsOpen);
+    };
     if (dataLoaded === false) return null;
     if (data.length === 0 && isOnboardingDone) {
         resize(380, 400);
@@ -83,6 +115,35 @@ const App = ({}) => {
     }
     return (
         <React.Fragment>
+            {/* <button onClick={openModal}>Open Modal</button> */}
+            <Modal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal"
+            >
+                <h2 ref={_subtitle => (subtitle = _subtitle)} hidden></h2>
+                <button
+                    style={{
+                        background: 'transparent',
+                        border: 'none',
+                        cursor: 'pointer',
+                        fontSize: '18px',
+                        float: 'right',
+                    }}
+                    onClick={closeModal}
+                >
+                    &times;
+                </button>
+                <div className="text-holder" style={{padding: '15px 0px'}}>
+                    <h3>Naming Convension Instructions</h3>
+                    <p style={{whiteSpace: 'pre-line'}}>
+                        Style Naming must use following naming convention brand/use/color
+                    </p>
+                    <p className="text-light">Example: brand1/primary.orange,</p>
+                </div>
+            </Modal>
             {isOnboardingDone ? (
                 <ThemeSwicther
                     data={data}
@@ -92,6 +153,7 @@ const App = ({}) => {
                     handleApplyTypeSelect={handleApplyTypeSelect}
                     isPopuphidden={applyThemePopupHidden}
                     getThemeList={getThemeList}
+                    toggleModal={toggleModal}
                     currentSelectionType={applyType}
                 />
             ) : (
