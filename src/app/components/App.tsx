@@ -126,11 +126,19 @@ const App = ({}) => {
                 <h2 ref={_subtitle => (subtitle = _subtitle)} hidden></h2>
                 <button
                     style={{
-                        background: 'transparent',
                         border: 'none',
+                        color: '#fff',
                         cursor: 'pointer',
-                        fontSize: '18px',
+                        fontSize: '22px',
                         float: 'right',
+                        padding: '0',
+                        width: '30px',
+                        height: '30px',
+                        borderRadius: '50%',
+                        lineHeight: '0.8',
+                        background: '#F48245',
+                        position: 'relative',
+                        right: '-5px',
                     }}
                     onClick={closeModal}
                 >

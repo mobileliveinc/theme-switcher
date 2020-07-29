@@ -109,7 +109,7 @@ const ThemeSwicther = ({
                                 onBlur={event => {
                                     collapseFilterOnBlur(event);
                                 }}
-                            ></input>
+                            />
                             <a className="search-btn">
                                 <svg
                                     width="13"
@@ -139,15 +139,15 @@ const ThemeSwicther = ({
                     />
                 </div>
                 <div className="themeSelectMessage">
+                    <a onClick={toggleModal} style={{cursor: 'pointer'}}>
+                        <img height="16px" src={require(`../../assets/information.svg`)} alt="information_icon" />
+                    </a>
                     {!isPopuphidden && (
                         <div className="msg-wrap">
                             <img src={require(`../../assets/clap.png`)} alt="clap_icon" />
                             <span>{popupMessage}</span>
                         </div>
                     )}
-                    <a onClick={toggleModal} style={{cursor: 'pointer'}}>
-                        <img height="16px" src={require(`../../assets/information.svg`)} alt="information_icon" />
-                    </a>
                     <a className="reset-link" onClick={handleResetStyle}>
                         Reset Style
                     </a>
