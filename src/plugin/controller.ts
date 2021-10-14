@@ -126,8 +126,8 @@ function getLocalPaintsArray(types: string) {
                 };
                 if (name.includes('/')) {
                     const [themes, colorName] = name.split('/');
-                    style.theme = themes;
-                    style.name = colorName;
+                    style.theme = themes.replace(/ /g, '').toLowerCase();
+                    style.name = colorName.replace(/ /g, '').toLowerCase();
                 }
 
                 if (style.name && style.key && style.theme && style.type) {
