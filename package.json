@@ -1,6 +1,6 @@
 {
 	"name": "Theme-Switcher",
-	"version": "1.0.0",
+	"version": "1.20.0",
 	"description": "This plugin template uses Typescript. If you are familiar with Javascript, Typescript will look very familiar. In fact, valid Javascript code is already valid Typescript code.",
 	"license": "ISC",
 	"scripts": {
@@ -25,6 +25,7 @@
 		"write-json-file": "^4.3.0"
 	},
 	"devDependencies": {
+		"@figma/plugin-typings": "^1.37.0",
 		"@types/react": "^16.8.24",
 		"@types/react-dom": "^16.8.5",
 		"css-loader": "^3.1.0",
