@@ -149,7 +149,7 @@ const App = ({}) => {
                     <p style={{whiteSpace: 'pre-line'}}>
                         Style Naming must use following naming convention brand/use/color
                     </p>
-                    <p className="text-light">Example: brand1/primary.orange,</p>
+                    <p className="text-light">Example: brand/primary/orange</p>
                 </div>
             </Modal>
             {isOnboardingDone ? (
